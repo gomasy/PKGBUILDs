@@ -33,7 +33,7 @@ sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
-            '8a40852ad4d81ad97e35627631814824079712ad269fa718f6119569f26fa7ce'
+            'd4fa1203a9b8d08e0675bb455cc11e01f9ff72f676b173f83cd85c83aa36ed18'
             'eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88')
 
 _common_flags=(
@@ -71,11 +71,10 @@ _mainline_flags=(
 )
 
 prepare() {
-  cd ${srcdir}/boringssl
-  patch -p1 < ${srcdir}/BoringSSL-enable-AES_CBC.patch
+  cd ${srcdir}
 
-  cd ${srcdir}/nginx-$pkgver
-  patch -p1 < ${srcdir}/BoringSSL-enable-OCSP.patch
+  patch -p1 -d boringssl < BoringSSL-enable-AES_CBC.patch
+  patch -p1 -d nginx-$pkgver < BoringSSL-enable-OCSP.patch
 }
 
 build() {
