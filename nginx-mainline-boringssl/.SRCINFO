@@ -29,7 +29,7 @@ pkgbase = nginx-mainline-boringssl
 	backup = etc/logrotate.d/nginx
 	source = https://nginx.org/download/nginx-1.15.5.tar.gz
 	source = https://nginx.org/download/nginx-1.15.5.tar.gz.asc
-	source = git+https://github.com/google/boringssl.git#commit=e3418028023f6399bee43d78db1ee7f374f52dc2
+	source = git+https://github.com/google/boringssl.git#commit=4b968339e3ced2d498f4182cd725243bb6cca81b
 	source = service
 	source = logrotate
 	source = BoringSSL-enable-AES_CBC.patch
@@ -40,7 +40,7 @@ pkgbase = nginx-mainline-boringssl
 	sha256sums = SKIP
 	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
-	sha256sums = 7f79882b9a4440d348263f50e2a7c86529fef569abf0a9b0155811d5f6f016b6
+	sha256sums = 8a40852ad4d81ad97e35627631814824079712ad269fa718f6119569f26fa7ce
 	sha256sums = eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88
 
 pkgname = nginx-mainline-boringssl

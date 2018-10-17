@@ -22,7 +22,7 @@ install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        "git+https://github.com/google/boringssl.git#commit=e3418028023f6399bee43d78db1ee7f374f52dc2"
+        "git+https://github.com/google/boringssl.git#commit=4b968339e3ced2d498f4182cd725243bb6cca81b"
         "service"
         "logrotate"
         "BoringSSL-enable-AES_CBC.patch"
@@ -33,7 +33,7 @@ sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
-            '7f79882b9a4440d348263f50e2a7c86529fef569abf0a9b0155811d5f6f016b6'
+            '8a40852ad4d81ad97e35627631814824079712ad269fa718f6119569f26fa7ce'
             'eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88')
 
 _common_flags=(

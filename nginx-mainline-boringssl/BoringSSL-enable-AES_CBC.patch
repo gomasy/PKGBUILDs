@@ -185,7 +185,7 @@ diff --git a/ssl/ssl_test.cc b/ssl/ssl_test.cc
 index 3bf93d9ff..1c0b8fd4c 100644
 --- a/ssl/ssl_test.cc
 +++ b/ssl/ssl_test.cc
-@@ -226,7 +226,7 @@ static const CipherTest kCipherTests[] = {
+@@ -230,7 +230,7 @@ static const CipherTest kCipherTests[] = {
      {
          // To simplify things, banish all but {ECDHE_RSA,RSA} x
          // {CHACHA20,AES_256_CBC,AES_128_CBC} x SHA1.
@@ -194,7 +194,7 @@ index 3bf93d9ff..1c0b8fd4c 100644
          // Order some ciphers backwards by strength.
          "ALL:-CHACHA20:-AES256:-AES128:-ALL:"
          // Select ECDHE ones and sort them by strength. Ties should resolve
-@@ -285,15 +285,15 @@ static const CipherTest kCipherTests[] = {
+@@ -289,15 +289,15 @@ static const CipherTest kCipherTests[] = {
      },
      // SSLv3 matches everything that existed before TLS 1.2.
      {
@@ -213,7 +213,7 @@ index 3bf93d9ff..1c0b8fd4c 100644
          {
              {TLS1_CK_RSA_WITH_AES_128_SHA, 0},
          },
-@@ -302,21 +302,21 @@ static const CipherTest kCipherTests[] = {
+@@ -306,21 +306,21 @@ static const CipherTest kCipherTests[] = {
      // The two directives have no intersection.  But each component is valid, so
      // even in strict mode it is accepted.
      {
@@ -240,7 +240,7 @@ index 3bf93d9ff..1c0b8fd4c 100644
              {TLS1_CK_RSA_WITH_AES_128_GCM_SHA256, 0},
          },
          // …but not in strict mode.
-@@ -863,22 +863,22 @@ TEST(SSLTest, CipherProperties) {
+@@ -867,22 +867,22 @@ TEST(SSLTest, CipherProperties) {
            NID_md5_sha1,
        },
        {
@@ -271,7 +271,7 @@ index 3bf93d9ff..1c0b8fd4c 100644
        },
        {
            TLS1_CK_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-@@ -1975,13 +1975,14 @@ TEST(SSLTest, ClientHello) {
+@@ -1979,13 +1979,14 @@ TEST(SSLTest, ClientHello) {
        0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x0b, 0x00, 0x02, 0x01, 0x00, 0x00,
        0x0a, 0x00, 0x08, 0x00, 0x06, 0x00, 0x1d, 0x00, 0x17, 0x00, 0x18}},
      {TLS1_2_VERSION,
