@@ -32,14 +32,16 @@ pkgbase = nginx-mainline-boringssl
 	source = git+https://boringssl.googlesource.com/boringssl
 	source = service
 	source = logrotate
-	source = Enable_BoringSSL_OCSP.patch
+	source = BoringSSL-enable-AES_CBC.patch
+	source = BoringSSL-enable-OCSP.patch
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = 1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b
 	sha256sums = b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e
-	sha256sums = f9bd30af2a6cf9283cf5e52ad2153fd467a9811bb2fb2b54b2a2d931ff9337ef
+	sha256sums = 7f79882b9a4440d348263f50e2a7c86529fef569abf0a9b0155811d5f6f016b6
+	sha256sums = eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88
 
 pkgname = nginx-mainline-boringssl
 
