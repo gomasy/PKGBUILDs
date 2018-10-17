@@ -72,8 +72,9 @@ _mainline_flags=(
 
 prepare() {
   cd ${srcdir}/nginx-$pkgver
-
   patch -p1 < ${srcdir}/BoringSSL-enable-AES_CBC.patch
+
+  cd ../boringssl
   patch -p1 < ${srcdir}/BoringSSL-enable-OCSP.patch
 }
 
