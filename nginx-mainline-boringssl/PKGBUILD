@@ -22,7 +22,7 @@ install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        "git+https://github.com/google/boringssl.git#commit=4b968339e3ced2d498f4182cd725243bb6cca81b"
+        "git+https://github.com/google/boringssl.git#commit=35fb591f242ec6b34ed24eb1c2cb7adb13fcf3b7"
         "service"
         "logrotate"
         "BoringSSL-enable-AES_CBC.patch"
