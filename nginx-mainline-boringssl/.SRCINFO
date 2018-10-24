@@ -30,12 +30,16 @@ pkgbase = nginx-mainline-boringssl
 	source = https://nginx.org/download/nginx-1.15.5.tar.gz
 	source = https://nginx.org/download/nginx-1.15.5.tar.gz.asc
 	source = git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable
+	source = git+https://github.com/openresty/headers-more-nginx-module.git
+	source = git+https://github.com/google/ngx_brotli.git
 	source = service
 	source = logrotate
 	source = BoringSSL-enable-AES_CBC.patch
 	source = BoringSSL-enable-OCSP.patch
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
 	sha256sums = 1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f
+	sha256sums = SKIP
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b

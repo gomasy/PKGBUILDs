@@ -23,12 +23,16 @@ provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
+        "git+https://github.com/openresty/headers-more-nginx-module.git"
+        "git+https://github.com/google/ngx_brotli.git"
         "service"
         "logrotate"
         "BoringSSL-enable-AES_CBC.patch"
         "BoringSSL-enable-OCSP.patch")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('1a3a889a8f14998286de3b14cc1dd5b2747178e012d6d480a18aa413985dae6f'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
@@ -101,9 +105,11 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+    --add-module=${srcdir}/headers-more-nginx-module \
+    --add-module=${srcdir}/ngx_brotli \
+    --with-openssl=${srcdir}/boringssl \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
-    --with-openssl=${srcdir}/boringssl \
     ${_common_flags[@]} \
     ${_mainline_flags[@]}
 
