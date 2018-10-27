@@ -1,0 +1,13 @@
+language: generic
+services:
+  - docker
+matrix:
+  include:
+    - before_script:
+      - cd nginx-mainline-boringssl
+    - before_script:
+      - cd vim-mainline
+    - before_script:
+      - cd neovim-mainline
+script:
+  - docker build -t gomasy/build:latest .
