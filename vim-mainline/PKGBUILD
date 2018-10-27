@@ -9,8 +9,8 @@ pkgdesc='VIM: Vi IMproved'
 url='http://www.vim.org'
 arch=('x86_64')
 license=('custom:vim')
-makedepends=('gawk' 'glibc' 'gpm' 'libffi' 'libgcrypt' 'libxt' 'lua'
-             'pcre' 'python' 'python2' 'ruby' 'zlib')
+makedepends=('gawk' 'git' 'glibc' 'gpm' 'libffi' 'libgcrypt' 'libxt'
+             'lua' 'pcre' 'python' 'python2' 'ruby' 'zlib')
 source=('git://github.com/vim/vim.git')
 sha1sums=('SKIP')
 
