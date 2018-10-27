@@ -1,0 +1,47 @@
+pkgbase = vim
+	pkgdesc = VIM: Vi IMproved
+	pkgver = 8.1
+	pkgrel = 1
+	url = http://www.vim.org
+	arch = x86_64
+	license = custom:vim
+	makedepends = gawk
+	makedepends = glibc
+	makedepends = gpm
+	makedepends = libffi
+	makedepends = libgcrypt
+	makedepends = libxt
+	makedepends = lua
+	makedepends = pcre
+	makedepends = python
+	makedepends = python2
+	makedepends = ruby
+	makedepends = zlib
+	source = git://github.com/vim/vim.git
+	sha1sums = SKIP
+
+pkgname = vim-mainline
+	depends = vim-runtime-mainline=8.1-1
+	depends = acl
+	depends = glibc
+	depends = gpm
+	depends = libxt
+	depends = libffi
+	depends = libgcrypt
+	depends = pcre
+	depends = zlib
+	optdepends = python2: Python 2 language support
+	optdepends = python: Python 3 language support
+	optdepends = ruby: Ruby language support
+	optdepends = lua: Lua language support
+	optdepends = perl: Perl language support
+	provides = xxd
+	conflicts = vim
+
+pkgname = vim-runtime-mainline
+	pkgdesc = VIM: Vi IMproved (shared runtime)
+	optdepends = sh: support for some tools and macros
+	optdepends = python: demoserver example tool
+	optdepends = gawk: mve tools upport
+	conflicts = vim-runtime
+

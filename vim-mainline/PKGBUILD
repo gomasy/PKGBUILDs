@@ -1,0 +1,104 @@
+# Maintainer: Gomasy <nyan@gomasy.jp>
+
+pkgbase='vim'
+pkgname=("$pkgbase-mainline" "$pkgbase-runtime-mainline")
+pkgver=8.1
+_versiondir=81
+pkgrel=1
+pkgdesc='VIM: Vi IMproved'
+url='http://www.vim.org'
+arch=('x86_64')
+license=('custom:vim')
+makedepends=('gawk' 'glibc' 'gpm' 'libffi' 'libgcrypt' 'libxt' 'lua'
+             'pcre' 'python' 'python2' 'ruby' 'zlib')
+source=('git://github.com/vim/vim.git')
+sha1sums=('SKIP')
+
+pkgver() {
+    cd "$pkgbase"
+    git describe --tags --long | sed -r 's/^v//;s/^([^-]*)-.*/\1/'
+}
+
+prepare() {
+    cd "$srcdir/$pkgbase/src"
+
+    sed -i 's|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|' feature.h
+    sed -i 's|^.*\(#define VIMRC_FILE.*"\) .*$|\1|' feature.h
+    autoconf
+}
+
+build() {
+    cd "$srcdir/$pkgbase/src"
+
+    ./configure \
+        --prefix=/usr \
+        --localstatedir=/var/lib/vim \
+        --with-features=huge \
+        --with-compiledby='gomasy.jp' \
+        --enable-gpm \
+        --enable-acl \
+        --with-x=yes \
+        --disable-gui \
+        --enable-multibyte \
+        --enable-cscope \
+        --enable-netbeans \
+        --enable-perlinterp=dynamic \
+        --enable-pythoninterp=dynamic \
+        --enable-python3interp=dynamic \
+        --enable-rubyinterp=dynamic \
+        --enable-luainterp=dynamic
+    make
+}
+
+package_vim-runtime-mainline() {
+    pkgdesc+=' (shared runtime)'
+    optdepends=('sh: support for some tools and macros'
+                'python: demoserver example tool'
+                'gawk: mve tools upport')
+    conflicts=('vim-runtime')
+
+    cd "$srcdir/$pkgbase"
+    make -j1 VIMRCLOC=/etc DESTDIR="$pkgdir" install
+
+    # no desktop files, icons, man...
+    rm -r "$pkgdir/usr/bin" "$pkgdir"/usr/share/{applications,icons,man}
+
+    # license
+    install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/usr/share/vim/vim$_versiondir/doc/uganda.txt" \
+        "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+}
+
+package_vim-mainline() {
+    depends=("vim-runtime-mainline=$pkgver-$pkgrel" 'acl' 'glibc' 'gpm'
+             'libxt' 'libffi' 'libgcrypt' 'pcre' 'zlib')
+    optdepends=('python2: Python 2 language support'
+                'python: Python 3 language support'
+                'ruby: Ruby language support'
+                'lua: Lua language support'
+                'perl: Perl language support')
+    conflicts=('vim')
+    provides=('xxd')
+
+    cd "$srcdir/$pkgbase"
+    make -j1 VIMRCLOC=/etc DESTDIR="$pkgdir" install
+
+    # provided by (n)vi in core
+    rm "$pkgdir"/usr/bin/{ex,view}
+
+    # delete some manpages
+    find "$pkgdir/usr/share/man" -type d -name 'man1' 2>/dev/null | \
+        while read _mandir; do
+        cd $_mandir
+        rm -f ex.1 view.1
+        rm -f evim.1
+    done
+
+    # no desktop files, icons, runtime packages...
+    rm -r "$pkgdir"/usr/share/{applications,icons,vim}
+
+    # license
+    install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+    ln -s "/usr/share/vim/vim$_versiondir/doc/uganda.txt" \
+        "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+}
