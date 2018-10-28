@@ -1,7 +1,7 @@
 FROM base/archlinux:latest
 ARG user="builduser"
 
-RUN pacman -Sy --noconfirm archlinux-keyring && \
+RUN pacman -Sy --noconfirm --needed archlinux-keyring && \
     pacman -Syu --noconfirm && \
     pacman-db-upgrade && \
     pacman -Sgq base | sed -e ':loop; N; $!b loop; s/\n/ /g' | sed -e 's/linux //' | xargs pacman -S --noconfirm --needed base-devel && \
