@@ -9,5 +9,7 @@ matrix:
       - cd vim-mainline
     - before_script:
       - cd neovim-mainline
+install:
+  - make
 script:
   - docker build -t gomasy/build:latest .

@@ -1,0 +1,6 @@
+ARG package="neovim-mainline"
+ADD . /home/$user/$package/
+
+RUN pacman -S --noconfirm --needed cmake git gperf jemalloc libtermkey libuv libvterm lua51-lpeg lua51-mpack luajit msgpack-c unibilium && \
+    chown -R ${user}. /home/${user} && \
+    su -l ${user} -c "cd ${package} && makepkg"
