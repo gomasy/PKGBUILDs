@@ -1,6 +1,5 @@
 ARG package="vim-mainline"
 ADD . /home/${user}/${package}/
 
-RUN pacman -S --noconfirm --needed acl gawk git glibc gpm libffi libxt lua pcre python python2 ruby zlib && \
-    chown -R ${user}. /home/${user} && \
-    su -l ${user} -c "cd ${package} && makepkg"
+RUN chown -R ${user}. /home/${user} && \
+    su -l ${user} -c "cd ${package} && makepkg -s"
