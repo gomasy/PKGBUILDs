@@ -1,4 +1,4 @@
-FROM base/archlinux:latest
+FROM archlinux/base:latest
 ARG user="builduser"
 
 RUN pacman -Sy --noconfirm --needed archlinux-keyring && \
