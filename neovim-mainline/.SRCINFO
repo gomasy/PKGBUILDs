@@ -11,6 +11,7 @@ pkgbase = neovim
 	makedepends = lua51-lpeg
 	makedepends = lua51-mpack
 	depends = jemalloc
+	depends = libluv
 	depends = libtermkey
 	depends = libuv
 	depends = libvterm
