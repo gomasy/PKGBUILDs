@@ -29,8 +29,7 @@ build() {
 
     cmake "../$pkgbase" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DENABLE_JEMALLOC=ON
+        -DCMAKE_INSTALL_PREFIX=/usr
     make
 }
 
