@@ -8,6 +8,6 @@ RUN pacman -Sy --noconfirm --needed archlinux-keyring && \
     useradd -m ${user} && \
     gpasswd -a ${user} wheel && \
     sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers && \
-    su -l ${user} -c "git clone https://aur.archlinux.org/yay.git && cd yay && yes | makepkg -si"
+    su -l ${user} -c "git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && yes | makepkg -sri"
 
 #include "build.docker"
