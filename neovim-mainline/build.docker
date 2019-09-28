@@ -2,4 +2,4 @@ ARG package="neovim-mainline"
 ADD . /home/${user}/${package}/
 
 RUN chown -R ${user}. /home/${user} && \
-    su -l ${user} -c "yay --noconfirm -S libluv && cd ${package} && yes | makepkg -s"
+    su -l ${user} -c "yay --noconfirm -S libluv libvterm-bzr && cd ${package} && yes | makepkg -s"
