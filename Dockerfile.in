@@ -4,7 +4,7 @@ ARG user="builduser"
 RUN pacman -Sy --noconfirm --needed archlinux-keyring && \
     pacman -Syu --noconfirm && \
     pacman-db-upgrade && \
-    pacman -Sgq base | sed -e ':loop; N; $!b loop; s/\n/ /g' | sed -e 's/linux //' | xargs pacman -S --noconfirm --needed base-devel git && \
+    pacman -S --noconfirm --needed base base-devel git && \
     useradd -m ${user} && \
     gpasswd -a ${user} wheel && \
     sed -i "s/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/" /etc/sudoers && \
