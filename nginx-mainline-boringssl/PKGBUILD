@@ -23,6 +23,7 @@ provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
+        "git+https://github.com/cloudflare/quiche.git"
         "git+https://github.com/openresty/headers-more-nginx-module.git"
         "git+https://github.com/google/ngx_brotli.git"
         "service"
@@ -32,6 +33,7 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "BoringSSL-enable-OCSP.patch")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('63ee35e15a75af028ffa1f995e2b9c120b59ef5f1b61a23b8a4c33c262fc10c3'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -63,6 +65,7 @@ _common_flags=(
   --with-http_sub_module
   --with-http_v2_module
   --with-http_v2_hpack_enc
+  --with-http_v3_module
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
@@ -84,6 +87,7 @@ prepare() {
   patch -p1 -d boringssl < BoringSSL-enable-AES_CBC.patch
   patch -p1 -d nginx-$pkgver < BoringSSL-enable-OCSP.patch
   patch -p1 -d nginx-$pkgver < nginx_dynamic_tls_records_and_http2_hpack.patch
+  patch -p1 -d nginx-$pkgver < quiche/extras/nginx/nginx-1.16.patch
 }
 
 build() {
@@ -113,6 +117,7 @@ build() {
     --add-module=${srcdir}/headers-more-nginx-module \
     --add-module=${srcdir}/ngx_brotli \
     --with-openssl=${srcdir}/boringssl \
+    --with-quiche=${srcdir}/quiche \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
