@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'geoip' 'mailcap')
-makedepends=('cmake' 'git' 'go')
+makedepends=('cmake' 'git' 'go' 'rust')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -23,6 +23,7 @@ provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
+        "git+https://github.com/cloudflare/quiche.git"
         "git+https://github.com/openresty/headers-more-nginx-module.git"
         "git+https://github.com/google/ngx_brotli.git"
         "service"
@@ -36,9 +37,10 @@ sha256sums=('63ee35e15a75af028ffa1f995e2b9c120b59ef5f1b61a23b8a4c33c262fc10c3'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
-            '8bd1a56d29140c50dc9ea147ec91347e56bc66e0263ca4c212be3e823e9fe962'
+            '8e73bad4e42d1278a6e89f811b96bc1963389ae97ed855697382e31c15c3e2d7'
             'd4fa1203a9b8d08e0675bb455cc11e01f9ff72f676b173f83cd85c83aa36ed18'
             'eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88')
 
@@ -63,6 +65,7 @@ _common_flags=(
   --with-http_sub_module
   --with-http_v2_module
   --with-http_v2_hpack_enc
+  --with-http_v3_module
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
@@ -83,6 +86,7 @@ prepare() {
   git -C ngx_brotli submodule update --init
   patch -p1 -d boringssl < BoringSSL-enable-AES_CBC.patch
   patch -p1 -d nginx-$pkgver < BoringSSL-enable-OCSP.patch
+  patch -p1 -d nginx-$pkgver < quiche/extras/nginx/nginx-1.16.patch
   patch -p1 -d nginx-$pkgver < nginx_dynamic_tls_records_and_http2_hpack.patch
 }
 
@@ -113,6 +117,7 @@ build() {
     --add-module=${srcdir}/headers-more-nginx-module \
     --add-module=${srcdir}/ngx_brotli \
     --with-openssl=${srcdir}/boringssl \
+    --with-quiche=${srcdir}/quiche \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
