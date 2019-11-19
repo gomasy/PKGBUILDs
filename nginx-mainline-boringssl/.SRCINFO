@@ -10,6 +10,7 @@ pkgbase = nginx-mainline-boringssl
 	makedepends = cmake
 	makedepends = git
 	makedepends = go
+	makedepends = rust
 	depends = pcre
 	depends = zlib
 	depends = geoip
