@@ -17,6 +17,7 @@ pkgbase = vim
 	makedepends = python
 	makedepends = python2
 	makedepends = ruby
+	makedepends = xorgproto
 	makedepends = zlib
 	source = git://github.com/vim/vim.git
 	sha1sums = SKIP
