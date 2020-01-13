@@ -2,8 +2,8 @@
 
 pkgbase='vim'
 pkgname=("$pkgbase-mainline" "$pkgbase-runtime-mainline")
-pkgver=8.1
-_versiondir=81
+pkgver=8.2
+_versiondir=82
 pkgrel=1
 pkgdesc='VIM: Vi IMproved'
 url='http://www.vim.org'
