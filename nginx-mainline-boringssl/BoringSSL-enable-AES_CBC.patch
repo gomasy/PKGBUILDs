@@ -1,8 +1,8 @@
 diff --git a/ssl/internal.h b/ssl/internal.h
-index 14daeff33..1b4fee627 100644
+index e1b0925b4..e8ff3c8ba 100644
 --- a/ssl/internal.h
 +++ b/ssl/internal.h
-@@ -453,8 +453,10 @@ namespace bssl {
+@@ -548,8 +548,10 @@ BSSL_NAMESPACE_BEGIN
  
  // Bits for |algorithm_mac| (symmetric authentication).
  #define SSL_SHA1 0x00000001u
@@ -15,10 +15,10 @@ index 14daeff33..1b4fee627 100644
  // Bits for |algorithm_prf| (handshake digest).
  #define SSL_HANDSHAKE_MAC_DEFAULT 0x1
 diff --git a/ssl/ssl_cipher.cc b/ssl/ssl_cipher.cc
-index 02380c195..759720b5d 100644
+index c4212926c..5490d1d3e 100644
 --- a/ssl/ssl_cipher.cc
 +++ b/ssl/ssl_cipher.cc
-@@ -210,6 +210,33 @@ static const SSL_CIPHER kCiphers[] = {
+@@ -208,6 +208,33 @@ static constexpr SSL_CIPHER kCiphers[] = {
       SSL_HANDSHAKE_MAC_DEFAULT,
      },
  
@@ -52,7 +52,7 @@ index 02380c195..759720b5d 100644
      // PSK cipher suites.
  
      // Cipher 8C
-@@ -348,6 +375,58 @@ static const SSL_CIPHER kCiphers[] = {
+@@ -346,6 +373,58 @@ static constexpr SSL_CIPHER kCiphers[] = {
       SSL_HANDSHAKE_MAC_DEFAULT,
      },
  
@@ -131,7 +131,7 @@ index 02380c195..759720b5d 100644
  };
  
  static const size_t kCipherAliasesLen = OPENSSL_ARRAY_SIZE(kCipherAliases);
-@@ -640,6 +721,23 @@ bool ssl_cipher_get_evp_aead(const EVP_AEAD **out_aead,
+@@ -627,6 +708,23 @@ bool ssl_cipher_get_evp_aead(const EVP_AEAD **out_aead,
      }
  
      *out_mac_secret_len = SHA_DIGEST_LENGTH;
@@ -155,7 +155,7 @@ index 02380c195..759720b5d 100644
    } else {
      return false;
    }
-@@ -1363,6 +1461,10 @@ int SSL_CIPHER_get_digest_nid(const SSL_CIPHER *cipher) {
+@@ -1411,6 +1509,10 @@ int SSL_CIPHER_get_digest_nid(const SSL_CIPHER *cipher) {
        return NID_undef;
      case SSL_SHA1:
        return NID_sha1;
@@ -166,7 +166,7 @@ index 02380c195..759720b5d 100644
    }
    assert(0);
    return NID_undef;
-@@ -1629,6 +1731,14 @@ const char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf,
+@@ -1677,6 +1779,14 @@ const char *SSL_CIPHER_description(const SSL_CIPHER *cipher, char *buf,
        mac = "SHA1";
        break;
  
