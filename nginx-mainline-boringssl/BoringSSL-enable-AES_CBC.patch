@@ -1,7 +1,7 @@
-diff --git a/src/ssl/internal.h b/src/ssl/internal.h
+diff --git a/ssl/internal.h b/ssl/internal.h
 index 182b02f6a..b69f67b6a 100644
---- a/src/ssl/internal.h
-+++ b/src/ssl/internal.h
+--- a/ssl/internal.h
++++ b/ssl/internal.h
 @@ -548,8 +548,10 @@ BSSL_NAMESPACE_BEGIN
  
  // Bits for |algorithm_mac| (symmetric authentication).
@@ -14,10 +14,10 @@ index 182b02f6a..b69f67b6a 100644
  
  // Bits for |algorithm_prf| (handshake digest).
  #define SSL_HANDSHAKE_MAC_DEFAULT 0x1
-diff --git a/src/ssl/ssl_cipher.cc b/src/ssl/ssl_cipher.cc
+diff --git a/ssl/ssl_cipher.cc b/ssl/ssl_cipher.cc
 index c4212926c..5490d1d3e 100644
---- a/src/ssl/ssl_cipher.cc
-+++ b/src/ssl/ssl_cipher.cc
+--- a/ssl/ssl_cipher.cc
++++ b/ssl/ssl_cipher.cc
 @@ -208,6 +208,33 @@ static constexpr SSL_CIPHER kCiphers[] = {
       SSL_HANDSHAKE_MAC_DEFAULT,
      },

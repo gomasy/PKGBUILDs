@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'geoip' 'mailcap')
-makedepends=('cmake' 'git' 'go' 'rust')
+makedepends=('cmake' 'git' 'go')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -22,8 +22,7 @@ install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        #"git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
-        "git+https://github.com/cloudflare/quiche.git"
+        "git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
         "git+https://github.com/openresty/headers-more-nginx-module.git"
         "git+https://github.com/google/ngx_brotli.git"
         "service"
@@ -33,15 +32,14 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "BoringSSL-enable-OCSP.patch")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('7c1f7bb13e79433ee930c597d272a64bc6e30c356a48524f38fd34fa88d62473'
-            #'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
-            '8e73bad4e42d1278a6e89f811b96bc1963389ae97ed855697382e31c15c3e2d7'
-            'ab21e9c1b28878cc996618daa75e7c430ab63329802187401b3091c61b674210'
+            '8bd1a56d29140c50dc9ea147ec91347e56bc66e0263ca4c212be3e823e9fe962'
+            '0ba83e5fb4717876006edacc6a9c3a642035fffd2d758ae048c0cfc91958d228'
             'eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88')
 
 _common_flags=(
@@ -65,7 +63,6 @@ _common_flags=(
   --with-http_sub_module
   --with-http_v2_module
   --with-http_v2_hpack_enc
-  --with-http_v3_module
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
@@ -83,21 +80,17 @@ _mainline_flags=(
 prepare() {
   cd ${srcdir}
 
-  git -C quiche submodule update --init
   git -C ngx_brotli submodule update --init
-  patch -p1 -d quiche/deps/boringssl < BoringSSL-enable-AES_CBC.patch
+  patch -p1 -d boringssl < BoringSSL-enable-AES_CBC.patch
   patch -p1 -d nginx-$pkgver < BoringSSL-enable-OCSP.patch
-  patch -p1 -d nginx-$pkgver < quiche/extras/nginx/nginx-1.16.patch
   patch -p1 -d nginx-$pkgver < nginx_dynamic_tls_records_and_http2_hpack.patch
 }
 
 build() {
-  export CXXFLAGS="$CXXFLAGS -fPIC"
-
-  cd ${srcdir}/quiche/deps/boringssl
-  mkdir build && cd build && cmake ../ && make && cd ${srcdir}/quiche/deps/boringssl
+  cd ${srcdir}/boringssl
+  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make && cd ${srcdir}/boringssl
   mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-  cp ${srcdir}/quiche/deps/boringssl/build/crypto/libcrypto.a ${srcdir}/quiche/deps/boringssl/build/ssl/libssl.a .openssl/lib
+  cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
 
   cd ${srcdir}/nginx-$pkgver
   ./configure \
@@ -117,14 +110,13 @@ build() {
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     --add-module=${srcdir}/headers-more-nginx-module \
     --add-module=${srcdir}/ngx_brotli \
-    --with-openssl=${srcdir}/quiche/deps/boringssl \
-    --with-quiche=${srcdir}/quiche \
+    --with-openssl=${srcdir}/boringssl \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
     ${_mainline_flags[@]}
 
-  touch ${srcdir}/quiche/deps/boringssl/.openssl/include/openssl/ssl.h
+  touch ${srcdir}/boringssl/.openssl/include/openssl/ssl.h
   make
 }
 
