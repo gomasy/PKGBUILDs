@@ -1,7 +1,7 @@
 # Maintainer: Gomasy <nyan@gomasy.jp>
 
 pkgname=nginx-mainline-boringssl
-pkgver=1.19.6
+pkgver=1.19.7
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "BoringSSL-enable-AES_CBC.patch"
         "BoringSSL-enable-OCSP.patch")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
-sha256sums=('b11195a02b1d3285ddf2987e02c6b6d28df41bb1b1dd25f33542848ef4fc33b5'
+sha256sums=('7ae4dd020c41d3a5e1e6a8578fcc60e508e3e27e7668e845ddc87a05a775b50e'
             'SKIP'
             'SKIP'
             'SKIP'
