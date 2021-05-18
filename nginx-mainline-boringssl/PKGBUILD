@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'geoip' 'mailcap')
-makedepends=('cmake' 'git' 'go')
+makedepends=('cmake' 'git' 'go' 'gcc<11')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
