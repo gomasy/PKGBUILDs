@@ -9,7 +9,7 @@ _kitpkgver=0.3.1
 arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'geoip' 'mailcap' 'luajit')
+depends=('pcre' 'zlib' 'geoip' 'mailcap' 'luajit' 'lua-resty-core')
 makedepends=('cmake' 'git' 'go')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'

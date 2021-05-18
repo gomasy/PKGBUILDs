@@ -15,6 +15,7 @@ pkgbase = nginx-mainline-boringssl
 	depends = geoip
 	depends = mailcap
 	depends = luajit
+	depends = lua-resty-core
 	provides = nginx
 	provides = nginx-mainline
 	conflicts = nginx
