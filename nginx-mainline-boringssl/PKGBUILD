@@ -24,8 +24,8 @@ install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        "https://github.com/vision5/ngx_devel_kit/archive/v$_kitpkgver/ngx_devel_kit-$_kitpkgver.tar.gz"
         "https://github.com/openresty/lua-nginx-module/archive/v$_luapkgver/lua-$_luapkgver.tar.gz"
+        "https://github.com/vision5/ngx_devel_kit/archive/v$_kitpkgver/ngx_devel_kit-$_kitpkgver.tar.gz"
         "git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
         "git+https://github.com/openresty/headers-more-nginx-module.git"
         "git+https://github.com/google/ngx_brotli.git"
@@ -37,8 +37,8 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88'
             'SKIP'
-            '0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85'
             '242d60b97eb7459cd0c0d58083cf7f3195d46181829da45ab8b09a857bb0ed01'
+            '0e971105e210d272a497567fa2e2c256f4e39b845a5ba80d373e26ba1abfbd85'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -116,8 +116,8 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --add-module=${srcdir}/ngx_devel_kit-${_kitpkgver} \
     --add-module=${srcdir}/lua-nginx-module-${_luapkgver} \
+    --add-module=${srcdir}/ngx_devel_kit-${_kitpkgver} \
     --add-module=${srcdir}/headers-more-nginx-module \
     --add-module=${srcdir}/ngx_brotli \
     --with-openssl=${srcdir}/boringssl \
