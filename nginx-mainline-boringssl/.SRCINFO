@@ -1,6 +1,6 @@
 pkgbase = nginx-mainline-boringssl
 	pkgdesc = Lightweight HTTP server and IMAP/POP3 proxy server, mainline release
-	pkgver = 1.19.10
+	pkgver = 1.21.0
 	pkgrel = 1
 	url = https://nginx.org
 	install = nginx.install
@@ -28,8 +28,8 @@ pkgbase = nginx-mainline-boringssl
 	backup = etc/nginx/uwsgi_params
 	backup = etc/nginx/win-utf
 	backup = etc/logrotate.d/nginx
-	source = https://nginx.org/download/nginx-1.19.10.tar.gz
-	source = https://nginx.org/download/nginx-1.19.10.tar.gz.asc
+	source = https://nginx.org/download/nginx-1.21.0.tar.gz
+	source = https://nginx.org/download/nginx-1.21.0.tar.gz.asc
 	source = git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable
 	source = git+https://github.com/openresty/headers-more-nginx-module.git
 	source = git+https://github.com/google/ngx_brotli.git
@@ -39,7 +39,7 @@ pkgbase = nginx-mainline-boringssl
 	source = BoringSSL-enable-AES_CBC.patch
 	source = BoringSSL-enable-OCSP.patch
 	validpgpkeys = B0F4253373F8F6F510D42178520A9993A1C052F8
-	sha256sums = e8d0290ff561986ad7cd6c33307e12e11b137186c4403a6a5ccdb4914c082d88
+	sha256sums = fe192a4bac2bd3a769e8695cb9fe14a00e57eaceb919095347a83b5b2afc0771
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
