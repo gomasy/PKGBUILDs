@@ -87,6 +87,10 @@ prepare() {
 }
 
 build() {
+  # Clear -D_FORTIFY_SOURCE from build flags, it causes Boringssl tests to fail to compile
+  export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+  export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+
   cd ${srcdir}/boringssl && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
   cd ${srcdir}/boringssl && mkdir -p .openssl/lib && cd .openssl && ln -s ../include .
   cd ${srcdir}/boringssl && cp build/crypto/libcrypto.a build/ssl/libssl.a .openssl/lib
