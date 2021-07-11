@@ -87,10 +87,9 @@ prepare() {
 }
 
 build() {
-  cd ${srcdir}/boringssl
-  mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make && cd ${srcdir}/boringssl
-  mkdir -p .openssl/lib && cd .openssl && ln -s ../include . && cd ../
-  cp ${srcdir}/boringssl/build/crypto/libcrypto.a ${srcdir}/boringssl/build/ssl/libssl.a .openssl/lib && cd ..
+  cd ${srcdir}/boringssl && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
+  cd ${srcdir}/boringssl && mkdir -p .openssl/lib && cd .openssl && ln -s ../include .
+  cd ${srcdir}/boringssl && cp build/crypto/libcrypto.a build/ssl/libssl.a .openssl/lib
 
   cd ${srcdir}/nginx-$pkgver
   ./configure \
