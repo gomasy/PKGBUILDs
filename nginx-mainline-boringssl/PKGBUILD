@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'geoip' 'mailcap')
-makedepends=('cmake' 'git' 'go' 'gcc<11')
+makedepends=('cmake' 'git' 'go' 'gcc')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -90,6 +90,9 @@ build() {
   # Clear -D_FORTIFY_SOURCE from build flags, it causes Boringssl tests to fail to compile
   export CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
   export CXXFLAGS=${CXXFLAGS/-D_FORTIFY_SOURCE=[1-9]/-D_FORTIFY_SOURCE=0}
+
+  export CXXFLAGS="$CXXFLAGS -fPIC"
+  export CFLAGS="$CFLAGS -fPIC -Wno-stringop-overflow -Wno-array-parameter"
 
   cd ${srcdir}/boringssl && mkdir build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../ && make
   cd ${srcdir}/boringssl && mkdir -p .openssl/lib && cd .openssl && ln -s ../include .
