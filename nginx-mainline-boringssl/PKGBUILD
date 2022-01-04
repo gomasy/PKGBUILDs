@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-boringssl
 pkgver=1.21.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -22,12 +22,11 @@ install=nginx.install
 provides=('nginx' 'nginx-mainline')
 conflicts=('nginx' 'nginx-mainline')
 source=($url/download/nginx-$pkgver.tar.gz{,.asc}
-        "git+https://boringssl.googlesource.com/boringssl#branch=chromium-stable"
+        "git+https://boringssl.googlesource.com/boringssl#commit=49f0329110a1d93a5febc2bceceedc655d995420"
         "git+https://github.com/openresty/headers-more-nginx-module.git"
         "git+https://github.com/google/ngx_brotli.git"
         "service"
         "logrotate"
-        "nginx_dynamic_tls_records_and_http2_hpack.patch"
         "BoringSSL-enable-OCSP.patch")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('b20f3bf533a518a6f0f3a7967dfeed872d268d31e4cc121a0001329602ddcfbb'
@@ -37,8 +36,7 @@ sha256sums=('b20f3bf533a518a6f0f3a7967dfeed872d268d31e4cc121a0001329602ddcfbb'
             'SKIP'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
-            '8bd1a56d29140c50dc9ea147ec91347e56bc66e0263ca4c212be3e823e9fe962'
-            'eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88')
+            'dd583f45d2cc858612f7ceb476b109ced25e917e2147f23eca7570ac10bb12d3')
 
 _common_flags=(
   --with-compat
@@ -60,7 +58,6 @@ _common_flags=(
   --with-http_stub_status_module
   --with-http_sub_module
   --with-http_v2_module
-  --with-http_v2_hpack_enc
   --with-mail
   --with-mail_ssl_module
   --with-pcre-jit
@@ -80,7 +77,6 @@ prepare() {
 
   git -C ngx_brotli submodule update --init
   patch -p1 -d nginx-$pkgver < BoringSSL-enable-OCSP.patch
-  patch -p1 -d nginx-$pkgver < nginx_dynamic_tls_records_and_http2_hpack.patch
 }
 
 build() {
