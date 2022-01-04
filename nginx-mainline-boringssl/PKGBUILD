@@ -2,7 +2,7 @@
 
 pkgname=nginx-mainline-boringssl
 pkgver=1.21.5
-pkgrel=2
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release'
 arch=('i686' 'x86_64')
 url='https://nginx.org'
@@ -28,7 +28,6 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "service"
         "logrotate"
         "nginx_dynamic_tls_records_and_http2_hpack.patch"
-        "BoringSSL-enable-AES_CBC.patch"
         "BoringSSL-enable-OCSP.patch")
 validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 sha256sums=('b20f3bf533a518a6f0f3a7967dfeed872d268d31e4cc121a0001329602ddcfbb'
@@ -39,7 +38,6 @@ sha256sums=('b20f3bf533a518a6f0f3a7967dfeed872d268d31e4cc121a0001329602ddcfbb'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             'b9af19a75bbeb1434bba66dd1a11295057b387a2cbff4ddf46253133909c311e'
             '8bd1a56d29140c50dc9ea147ec91347e56bc66e0263ca4c212be3e823e9fe962'
-            'e3b2e6114e541e00ae6598be4e7385160dbdf5dd4290b57de1554068228ba32c'
             'eb9fdfc7701cbee297971cfbf6ee2bc602aa6ce56cdcc5cd29dfda2dcb203e88')
 
 _common_flags=(
@@ -81,7 +79,6 @@ prepare() {
   cd ${srcdir}
 
   git -C ngx_brotli submodule update --init
-  patch -p1 -d boringssl < BoringSSL-enable-AES_CBC.patch
   patch -p1 -d nginx-$pkgver < BoringSSL-enable-OCSP.patch
   patch -p1 -d nginx-$pkgver < nginx_dynamic_tls_records_and_http2_hpack.patch
 }
