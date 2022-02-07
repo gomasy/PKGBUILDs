@@ -24,15 +24,12 @@ pkgbase = vim
 
 pkgname = vim-mainline
 	depends = vim-runtime-mainline=8.2-1
+	depends = gpm
 	depends = acl
 	depends = glibc
-	depends = gpm
-	depends = libxt
-	depends = libffi
 	depends = libgcrypt
 	depends = pcre
 	depends = zlib
-	optdepends = python2: Python 2 language support
 	optdepends = python: Python 3 language support
 	optdepends = ruby: Ruby language support
 	optdepends = lua: Lua language support
@@ -46,4 +43,3 @@ pkgname = vim-runtime-mainline
 	optdepends = python: demoserver example tool
 	optdepends = gawk: mve tools upport
 	conflicts = vim-runtime
-

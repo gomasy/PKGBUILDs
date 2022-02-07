@@ -43,7 +43,6 @@ build() {
         --enable-cscope \
         --enable-netbeans \
         --enable-perlinterp=dynamic \
-        --enable-pythoninterp=dynamic \
         --enable-python3interp=dynamic \
         --enable-rubyinterp=dynamic \
         --enable-luainterp=dynamic
@@ -70,10 +69,9 @@ package_vim-runtime-mainline() {
 }
 
 package_vim-mainline() {
-    depends=("vim-runtime-mainline=$pkgver-$pkgrel" 'acl' 'glibc' 'gpm'
-             'libxt' 'libffi' 'libgcrypt' 'pcre' 'zlib')
-    optdepends=('python2: Python 2 language support'
-                'python: Python 3 language support'
+    depends=("vim-runtime-mainline=$pkgver-$pkgrel" 'gpm' 'acl' 'glibc' 'libgcrypt'
+             'pcre' 'zlib')
+    optdepends=('python: Python 3 language support'
                 'ruby: Ruby language support'
                 'lua: Lua language support'
                 'perl: Perl language support')
