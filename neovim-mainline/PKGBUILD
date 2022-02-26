@@ -53,7 +53,7 @@ package() {
     cd "$pkgbase"
 
     DESTDIR="$pkgdir" cmake --install build
-    install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 runtime/nvim.desktop "$pkgdir/usr/share/applications/nvim.desktop"
     install -Dm644 runtime/nvim.appdata.xml "$pkgdir/usr/share/metainfo/nvim.appdata.xml"
     install -Dm644 runtime/nvim.png "$pkgdir/usr/share/pixmaps/nvim.png"
