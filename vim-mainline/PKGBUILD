@@ -11,7 +11,7 @@ arch=('x86_64')
 license=('custom:vim')
 makedepends=('gawk' 'git' 'glibc' 'gpm' 'libffi' 'libgcrypt' 'libxt'
              'lua' 'pcre' 'python' 'python2' 'ruby' 'xorgproto' 'zlib')
-source=('git://github.com/vim/vim.git')
+source=('git+https://github.com/vim/vim.git')
 sha1sums=('SKIP')
 
 pkgver() {

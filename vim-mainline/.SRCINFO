@@ -19,7 +19,7 @@ pkgbase = vim
 	makedepends = ruby
 	makedepends = xorgproto
 	makedepends = zlib
-	source = git://github.com/vim/vim.git
+	source = git+https://github.com/vim/vim.git
 	sha1sums = SKIP
 
 pkgname = vim-mainline

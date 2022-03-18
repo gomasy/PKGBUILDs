@@ -27,7 +27,7 @@ pkgbase = neovim
 	provides = vim-plugin-runtime
 	conflicts = neovim
 	backup = etc/xdg/nvim/sysinit.vim
-	source = git://github.com/neovim/neovim.git
+	source = git+https://github.com/neovim/neovim.git
 	sha256sums = SKIP
 
 pkgname = neovim-mainline
