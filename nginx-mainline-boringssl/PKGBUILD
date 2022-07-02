@@ -28,7 +28,7 @@ source=($url/download/nginx-$pkgver.tar.gz{,.asc}
         "service"
         "logrotate"
         "BoringSSL-enable-OCSP.patch")
-validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
+validpgpkeys=('13C82A63B603576156E30A4EA0EA981B66B0D967') # Konstantin Pavlov <thresh@nginx.com>
 sha256sums=('820acaa35b9272be9e9e72f6defa4a5f2921824709f8aa4772c78ab31ed94cd1'
             'SKIP'
             'SKIP'
