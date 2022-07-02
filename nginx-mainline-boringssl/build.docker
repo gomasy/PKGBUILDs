@@ -1,6 +1,0 @@
-ARG package="nginx-mainline-boringssl"
-ADD . /home/${user}/${package}/
-
-RUN chown -R ${user}. /home/${user} && \
-    su -l ${user} -c "gpg --keyserver keyserver.ubuntu.com --recv-keys 520A9993A1C052F8" && \
-    su -l ${user} -c "cd ${package} && yes | makepkg -s"
