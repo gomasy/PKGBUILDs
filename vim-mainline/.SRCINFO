@@ -1,6 +1,6 @@
 pkgbase = vim
 	pkgdesc = VIM: Vi IMproved
-	pkgver = 8.2
+	pkgver = 9.0
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = x86_64
@@ -15,7 +15,6 @@ pkgbase = vim
 	makedepends = lua
 	makedepends = pcre
 	makedepends = python
-	makedepends = python2
 	makedepends = ruby
 	makedepends = xorgproto
 	makedepends = zlib
@@ -23,7 +22,7 @@ pkgbase = vim
 	sha1sums = SKIP
 
 pkgname = vim-mainline
-	depends = vim-runtime-mainline=8.2-1
+	depends = vim-runtime-mainline=9.0-1
 	depends = gpm
 	depends = acl
 	depends = glibc
