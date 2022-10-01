@@ -2,7 +2,7 @@
 
 pkgbase='neovim'
 pkgname="$pkgbase-mainline"
-pkgver=0.7.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs'
 arch=('x86_64')
@@ -11,7 +11,7 @@ backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
 provides=("neovim=${pkgver}" 'vim-plugin-runtime')
 conflicts=('neovim')
-depends=('libtermkey' 'libuv' 'msgpack-c' 'unibilium' 'libvterm01' 'luajit' 'libluv' 'tree-sitter')
+depends=('libtermkey' 'libuv' 'msgpack-c' 'unibilium' 'libvterm>0.1.4' 'luajit' 'libluv' 'tree-sitter')
 makedepends=('cmake' 'ninja' 'lua51-mpack' 'lua51-lpeg' 'gperf' 'git' 'patchelf')
 optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
@@ -32,7 +32,6 @@ pkgver() {
 
 build() {
     cd "$pkgbase"
-    export PKG_CONFIG_PATH="/usr/lib/libvterm01/pkgconfig:$PKG_CONFIG_PATH"
 
     cmake \
         -Bbuild \
@@ -67,8 +66,4 @@ package() {
 
     mkdir -p "$pkgdir/usr/share/vim"
     echo "set runtimepath+=/usr/share/vim/vimfiles" > "$pkgdir/usr/share/nvim/archlinux.vim"
-
-    # NOTE: this is very ugly and needs to be removed as soon as neovim supports libvterm >= 0.2.0
-    # (both libvterm01 and libvterm provide libvterm.so.0)
-    patchelf --add-rpath "/usr/lib/libvterm01" "$pkgdir/usr/bin/nvim"
 }
