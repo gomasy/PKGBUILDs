@@ -7,7 +7,6 @@ pkgbase = neovim
 	license = custom:neovim
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = lua51-mpack
 	makedepends = lua51-lpeg
 	makedepends = git
 	depends = libtermkey
