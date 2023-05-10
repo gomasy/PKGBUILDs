@@ -41,7 +41,6 @@ build() {
         -DUSE_BUNDLED=OFF \
         -W no-dev
 
-    sed -i 's|-llpeg|/usr/lib/lua/5.1/lpeg.so|g' build/build.ninja
     cmake --build build
 }
 
