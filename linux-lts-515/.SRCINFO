@@ -1,5 +1,5 @@
 pkgbase = linux-lts-515
-	pkgdesc = LTS Linux
+	pkgdesc = LTS Linux (5.15.x longterm branch)
 	pkgver = 5.15.112
 	pkgrel = 1
 	url = https://www.kernel.org/
@@ -39,7 +39,7 @@ pkgbase = linux-lts-515
 	sha256sums = 067e8995fcd6f6ed25e0253e9374c0e179a000c154da3e59ce62634945ac5be9
 
 pkgname = linux-lts-515
-	pkgdesc = The LTS Linux kernel and modules
+	pkgdesc = The LTS Linux (5.15.x longterm branch) kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -51,8 +51,8 @@ pkgname = linux-lts-515
 	replaces = wireguard-lts
 
 pkgname = linux-lts-515-headers
-	pkgdesc = Headers and scripts for building modules for the LTS Linux kernel
+	pkgdesc = Headers and scripts for building modules for the LTS Linux (5.15.x longterm branch) kernel
 	depends = pahole
 
 pkgname = linux-lts-515-docs
-	pkgdesc = Documentation for the LTS Linux kernel
+	pkgdesc = Documentation for the LTS Linux (5.15.x longterm branch) kernel
