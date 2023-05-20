@@ -1,5 +1,0 @@
-ARG package="vim-mainline"
-ADD . /home/${user}/${package}/
-
-RUN chown -R ${user}. /home/${user} && \
-    su -l ${user} -c "cd ${package} && yes | makepkg -s"
