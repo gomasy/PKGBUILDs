@@ -1,4 +1,4 @@
-pkgbase = linux-lts
+pkgbase = linux-lts-61
 	pkgdesc = LTS Linux 6.1.x
 	pkgver = 6.1.74
 	pkgrel = 1
@@ -34,7 +34,7 @@ pkgbase = linux-lts
 	b2sums = 02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c
 	b2sums = c8297593e7e7d3dd3fa8c2aa887915b3d1cc903ba982c59c1c77ec75c90991f45c3004529044ba255f7ad7e2b84d48e1224456f040919969df7afa1e6eabb7fb
 
-pkgname = linux-lts
+pkgname = linux-lts-61
 	pkgdesc = The LTS Linux 6.1.x kernel and modules
 	depends = coreutils
 	depends = initramfs
@@ -46,9 +46,9 @@ pkgname = linux-lts
 	provides = WIREGUARD-MODULE
 	replaces = wireguard-lts
 
-pkgname = linux-lts-headers
+pkgname = linux-lts-61-headers
 	pkgdesc = Headers and scripts for building modules for the LTS Linux 6.1.x kernel
 	depends = pahole
 
-pkgname = linux-lts-docs
+pkgname = linux-lts-61-docs
 	pkgdesc = Documentation for the LTS Linux 6.1.x kernel

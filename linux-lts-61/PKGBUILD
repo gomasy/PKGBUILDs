@@ -1,6 +1,6 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
-pkgbase=linux-lts
+pkgbase=linux-lts-61
 pkgver=6.1.74
 pkgrel=1
 pkgdesc='LTS Linux 6.1.x'
