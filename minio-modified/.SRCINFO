@@ -9,6 +9,7 @@ pkgbase = minio-modified
 	makedepends = git
 	depends = glibc
 	provides = minio
+	conflicts = minio
 	backup = etc/minio/minio.conf
 	source = git+https://github.com/Gomasy/minio.git#tag=RELEASE.2024-02-04T22-36-13Z
 	source = minio.conf

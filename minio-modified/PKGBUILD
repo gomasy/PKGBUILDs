@@ -15,6 +15,7 @@ url='https://minio.io'
 license=('AGPL3')
 depends=('glibc')
 provides=('minio')
+conflicts=('minio')
 makedepends=('go' 'git')
 source=(git+https://github.com/Gomasy/minio.git#tag=RELEASE.${_pkgver}
         minio.conf
