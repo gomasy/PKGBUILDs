@@ -60,7 +60,7 @@ package() {
     install -Dm644 -t "$pkgdir/usr/share/libalpm/hooks/" nvimdoc.hook
     install -Dt "$pkgdir/usr/share/libalpm/scripts/" nvimdoc
 
-    cd "$_pkgname"
+    cd "$pkgbase"
     DESTDIR="$pkgdir" cmake --install build
 
     install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
