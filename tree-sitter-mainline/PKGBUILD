@@ -4,7 +4,7 @@
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
 pkgname=tree-sitter-mainline
-pkgver=0.21.0.pre1
+pkgver=0.21.0
 pkgrel=1
 pkgdesc="An incremental parsing system for programming tools"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=("tree-sitter=$pkgver" 'libtree-sitter.so')
 conflicts=('tree-sitter')
 options=('staticlibs')
-source=("git+https://github.com/tree-sitter/tree-sitter.git#commit=76baf8152adada3a630bba9691fadb413a8e3783")
+source=("git+https://github.com/tree-sitter/tree-sitter.git#commit=1c55abb5308fe3891da545662e5df7ba28ade275")
 sha256sums=('SKIP')
 
 build() {
