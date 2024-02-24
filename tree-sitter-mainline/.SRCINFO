@@ -2,6 +2,7 @@ pkgbase = tree-sitter-mainline
 	pkgdesc = An incremental parsing system for programming tools
 	pkgver = 0.21.0
 	pkgrel = 1
+	epoch = 1
 	url = https://tree-sitter.github.io/tree-sitter/
 	arch = x86_64
 	license = MIT
