@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-61
-pkgver=6.1.84
+pkgver=6.1.85
 pkgrel=1
 pkgdesc='LTS Linux 6.1.x'
 url='https://www.kernel.org'
@@ -32,20 +32,23 @@ source=(
   https://cdn.kernel.org/pub/linux/kernel/v${pkgver%%.*}.x/${_srcname}.tar.{xz,sign}
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   config  # the main kernel config file
+  docutils.patch  # fix the docs build
 )
 validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
-sha256sums=('af97d2ebe14765d0db3af6560309daf08535da25bfad36e5fb3e436f22a1707a'
+sha256sums=('33fe9bcc597c60021a2b2abacd4e0f6f546200ab99594c9a07ad600258b86274'
             'SKIP'
             '21195509fded29d0256abfce947b5a8ce336d0d3e192f3f8ea90bde9dd95a889'
-            '2e6e0438887ce31a7252f83dc03a929e897227bb6579061e5cd02241ddc82082')
-b2sums=('50fd2700fe6bf02dd99ddc0b8963d35d8dae43fa6f7e9226e69e2094317a7383a0bcccc20faf7b22a6736204348023a8f53c06b1b1dfaa6637446962ec36367c'
+            '2eda1f4b2226edfd5f70f4c7ff14aa32225fea607e0979b028a1de6d1dbd6ad9'
+            '9cb73cacbb3633f207d0c30e738cae9965adcd0b0eb5ecd60563fed1394c0f38')
+b2sums=('84b45ba6114b4c2cc1c5141fdbcc7fa3fb26d3ae288fbf9d01b4c1fe55576fc8bed69dbfbfcdec6cf1067ea9d9ec2968e2d749fad7475a76da3b00f8c6cbd976'
         'SKIP'
         '02a10396c92ab93124139fc3e37b1d4d8654227556d0d11486390da35dfc401ff5784ad86d0d2aa7eacac12bc451aa2ff138749748c7e24deadd040d5404734c'
-        'd79a46a1b0b31b0d49db6957d4354ae9d41baa0aba3b051c813ac318ba4a8d33070f82dda101f8b9679f44b205cbeb91d9125b501f1bc3359f2811fc58137f6a')
+        '2a3e5344daa781b703f9c0393aaedd40d7d8220371e0af34d4425b20b07184b0e9ad1d57c5f122c16fa4dcda9c3766143235417bed8dc0470cc39c9753cc2422'
+        '0bb42a22c110f06a45e59a9adc194184a51ff97e5584d6ffabca0aa37e1e65ccaf44f43dc744eaa3861d6f6b00e299d4662bcf0c0d94478af9352b4c4f6b0ffd')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
