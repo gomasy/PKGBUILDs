@@ -1,0 +1,49 @@
+pkgbase = nvidia-470xx-utils
+	pkgver = 470.239.06
+	pkgrel = 1
+	url = http://www.nvidia.com/
+	arch = x86_64
+	license = custom
+	options = !strip
+	source = nvidia-drm-outputclass.conf
+	source = nvidia-470xx-utils.sysusers
+	source = nvidia-470xx.rules
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/470.239.06/NVIDIA-Linux-x86_64-470.239.06.run
+	source = disable-nvkms-import-log.patch
+	sha512sums = de7116c09f282a27920a1382df84aa86f559e537664bb30689605177ce37dc5067748acf9afd66a3269a6e323461356592fdfc624c86523bf105ff8fe47d3770
+	sha512sums = 4b3ad73f5076ba90fe0b3a2e712ac9cde76f469cd8070280f960c3ce7dc502d1927f525ae18d008075c8f08ea432f7be0a6c3a7a6b49c361126dcf42f97ec499
+	sha512sums = e307e5fe005dfafee35c179c5f215e22a85dfd367a9b60d5092eee96f869d8ce4595fae33ce6febb74721974c6f781a53418ce1a3210768632347471ae3f5594
+	sha512sums = 92bdfb11db405071cd58deed2a0853448932657e256258e0a0bda5069f00485e2b6e49b4a0eeff499a4991be4f884273f3564c164110b1ed1f5d924506f13e2d
+	sha512sums = 065d0c48e5f52854998f7ce981a38569b19922a5c98d279fef4d0df2e16e03878242b76fa1a1bf4fa30837fcdfa6d48731fce7b8401a1b1cef54bddde96f9222
+
+pkgname = nvidia-470xx-utils
+	pkgdesc = NVIDIA drivers utilities
+	install = nvidia-470xx-utils.install
+	depends = xorg-server
+	depends = libglvnd
+	depends = egl-wayland
+	optdepends = nvidia-470xx-settings: configuration tool
+	optdepends = xorg-server-devel: nvidia-xconfig
+	optdepends = opencl-nvidia-470xx: OpenCL support
+	provides = vulkan-driver
+	provides = opengl-driver
+	provides = nvidia-libgl
+	provides = nvidia-utils
+	conflicts = nvidia-libgl
+	conflicts = nvidia-utils
+
+pkgname = opencl-nvidia-470xx
+	pkgdesc = OpenCL implemention for NVIDIA
+	depends = zlib
+	optdepends = opencl-headers: headers necessary for OpenCL development
+	provides = opencl-driver
+	provides = opencl-nvidia
+	conflicts = opencl-nvidia
+
+pkgname = nvidia-470xx-dkms
+	pkgdesc = NVIDIA drivers - module sources
+	depends = dkms
+	depends = nvidia-470xx-utils=470.239.06
+	depends = libglvnd
+	provides = NVIDIA-MODULE
+	conflicts = nvidia-dkms
