@@ -11,6 +11,7 @@ pkgbase = neovim
 	makedepends = ninja
 	makedepends = unzip
 	depends = libluv
+	depends = libutf8proc
 	depends = libuv
 	depends = libvterm>0.1.4
 	depends = lua51-lpeg
