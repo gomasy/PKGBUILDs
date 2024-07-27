@@ -41,10 +41,11 @@ build() {
     cd "$pkgbase"
 
     cmake \
-        -Bbuild \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DUSE_BUNDLED=OFF \
+        -B build \
+        -G Ninja \
+        -D CMAKE_BUILD_TYPE=Release \
+        -D CMAKE_INSTALL_PREFIX=/usr \
+        -D USE_BUNDLED=OFF \
         -W no-dev
 
     cmake --build build --verbose
