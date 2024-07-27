@@ -13,16 +13,14 @@ pkgbase = neovim
 	depends = libluv
 	depends = libutf8proc
 	depends = libuv
-	depends = libvterm>0.1.4
+	depends = libvterm>=0.3.3
 	depends = lua51-lpeg
 	depends = luajit
 	depends = msgpack-c
 	depends = tree-sitter
-	depends = tree-sitter-bash
 	depends = tree-sitter-c
 	depends = tree-sitter-lua
 	depends = tree-sitter-markdown
-	depends = tree-sitter-python
 	depends = tree-sitter-query
 	depends = tree-sitter-vimdoc
 	depends = unibilium

@@ -11,8 +11,8 @@ backup=('etc/xdg/nvim/sysinit.vim')
 license=('Apache-2.0' 'LicenseRef-vim')
 provides=("neovim=${pkgver}" 'vim-plugin-runtime')
 conflicts=('neovim')
-depends=('libluv' 'libutf8proc' 'libuv' 'libvterm>0.1.4' 'lua51-lpeg' 'luajit' 'msgpack-c' 'tree-sitter' 'tree-sitter-bash'
-         'tree-sitter-c' 'tree-sitter-lua' 'tree-sitter-markdown' 'tree-sitter-python' 'tree-sitter-query' 'tree-sitter-vimdoc' 'unibilium')
+depends=('libluv' 'libutf8proc' 'libuv' 'libvterm>=0.3.3' 'lua51-lpeg' 'luajit' 'msgpack-c' 'tree-sitter' 'tree-sitter-c'
+         'tree-sitter-lua' 'tree-sitter-markdown' 'tree-sitter-query' 'tree-sitter-vimdoc' 'unibilium')
 makedepends=('cmake' 'git' 'ninja' 'unzip')
 optdepends=('python-neovim: for Python 3 plugin support (see :help python)'
             'xclip: for clipboard support on X11 (or xsel) (see :help clipboard)'
