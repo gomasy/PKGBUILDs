@@ -6,8 +6,8 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=minio-modified
-pkgver=2024.07.31
-_timever=T05-46-26Z
+pkgver=2024.08.03
+_timever=T04-33-23Z
 _pkgver="${pkgver//./-}${_timever//:/-}"
 pkgrel=1
 pkgdesc='Object storage server compatible with Amazon S3'
