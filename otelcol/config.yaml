@@ -4,28 +4,26 @@ receivers:
   otlp:
     protocols:
       grpc:
+        endpoint: localhost:4317
       http:
-
+        endpoint: localhost:4318
 
 processors:
   batch:
 
 exporters:
-  logging:
+  debug:
     verbosity: detailed
 
 service:
-
   pipelines:
-
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
-
+      exporters: [debug]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [logging]
+      exporters: [debug]
 
   extensions: []
