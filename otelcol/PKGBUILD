@@ -1,4 +1,5 @@
-# Maintainer: Roger Coll <rogercoll at protonmail dot com>
+# Maintainer: Gomasy <nyan@gomasy.jp>
+# Contributor: Roger Coll <rogercoll at protonmail dot com>
 
 pkgname=otelcol
 pkgver=0.111.0
@@ -31,9 +32,11 @@ sha512sums=('3d875436dae2d58d76e21f50e4b3856dac22e97c983ab7514a4c6e85aeeea413694
             '50f13556ccce7464544bc48f1f9e23a074fb13fe433a0142e6694286791d85254532ba4751b8d615052dfdc4bb69556de8b4f67b9eeb2d2acee0f25bc29fad8f'
             '1099aa6227eac7a5a371d742e72b88d078b9018264162245da3e510d272e4148bdb440499551306b9fb82939ffe520eae71305629596da4aca1a342ddad2e894')
 
+prepare() {
+    chmod +x ocb
+}
 
 build() {
-    chmod +x ocb
     ./ocb --config=builder-config.yaml
 }
 
