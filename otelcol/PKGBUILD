@@ -2,7 +2,7 @@
 # Contributor: Roger Coll <rogercoll at protonmail dot com>
 
 pkgname=otelcol
-pkgver=0.115.0
+pkgver=0.116.0
 pkgrel=1
 epoch=
 pkgdesc="OpenTelemetry Collector Local binary"
@@ -26,11 +26,11 @@ source=("ocb::${url}-releases/releases/download/cmd%2Fbuilder%2Fv${pkgver}/ocb_$
     "config.yaml"
     "builder-config.yaml"
 )
-sha512sums=('299dd6e7d85dfc915d282f6123444c03b28f3744aa44ed1f0009c135c08eee5463a7c57f68a15cf96fe9cff8538540dd1b223c714c7be3f65b4934b6e32e73c4'
+sha512sums=('afe6eb8fe1abaecd1a9102f93f00d48869279e22d0e10027efa59be42b547565bdeca780471b498d237b9c3b4e02569ad45ee5a2ec87f6a0a7d37927f15ef030'
             '351cb7da00ae09559ca3e48932c1f0e0a8ccd4f1bff982ce2ce8ab3b50b5eec3715f2e21c9c12d04568f6b764588a92f4641c741b148080b0222e591fb691102'
             'f51d0e59bcdcf0c1f871de1667ed15f3f500cde6aabe78d8a596c238b8a1a1daa59831a203756ac372e5c753c0db75786612c93b65b99542c2a0ffcb5023e1e4'
             '50f13556ccce7464544bc48f1f9e23a074fb13fe433a0142e6694286791d85254532ba4751b8d615052dfdc4bb69556de8b4f67b9eeb2d2acee0f25bc29fad8f'
-            '782c46927ef73428be62a73aaf6ed94946c9d68fa1c5025558efc6c65f64feb22630a94eb760e699f4fe966c4abb1fd6b7952a1f01a4e4b3af96320b4e230b97')
+            '0fa1c297afc2bffb93ac87103d032986630a98c660b55f93cc76dc045560924fafb69b42d91c3de4c6ba1c37ed6e2c701004750f59bbaa1ddf5801be7927db0b')
 
 prepare() {
     chmod +x ocb
