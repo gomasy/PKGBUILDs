@@ -40,10 +40,6 @@ pkgver() {
 build() {
     cd "$pkgbase"
 
-    # Use bundled utf8proc until upstream pins back to a stable release
-    cmake -S cmake.deps -B .deps -G Ninja -DUSE_BUNDLED=OFF -DUSE_BUNDLED_UTF8PROC=ON
-    cmake --build .deps
-
     cmake \
         -B build \
         -G Ninja \
