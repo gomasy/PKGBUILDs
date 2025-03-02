@@ -46,6 +46,7 @@ build() {
         -D CMAKE_BUILD_TYPE=RelWithDebInfo \
         -D CMAKE_INSTALL_PREFIX=/usr \
         -D USE_BUNDLED=OFF \
+        -D ENABLE_TRANSLATIONS=ON \
         -W no-dev
 
     cmake --build build --verbose
