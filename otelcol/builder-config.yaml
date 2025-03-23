@@ -25,7 +25,7 @@ processors:
 
 connectors:
   - gomod: go.opentelemetry.io/collector/connector/forwardconnector v0.122.1
-  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector v0.122.1
+  - gomod: github.com/open-telemetry/opentelemetry-collector-contrib/connector/spanmetricsconnector v0.122.0
 
 providers:
   - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.28.1
