@@ -1,0 +1,31 @@
+name: Daily build
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build
+        run: docker build -t dist .
+
+      - name: Export
+        run: docker run -v "./dist:/opt/builder/dist" --rm dist sh -c "cp */*.tar.zst dist"
+
+      - name: Deploy
+        env:
+          _TOKEN: ${{ secrets._TOKEN }}
+        run: |
+          cd dist
+          ls -l
+          tar -cf ../build.tar.gz *.tar.zst
+          cd ..
+          curl -H "X-Token:$_TOKEN" -H "X-Repo:pkgbuilds" -F build=@build.tar.gz https://gomasy.jp/api/v1/github/push
