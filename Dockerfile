@@ -14,26 +14,9 @@ RUN pacman-key --init && \
 
 COPY --chown=builder:builder . /opt/builder
 
-# package: vim-mainline
-FROM builder AS vim-builder
-
-USER builder
-WORKDIR /opt/builder/vim-mainline
-
-RUN makepkg -s --noconfirm OPTIONS=-debug
-
-# package: neovim-mainline
-FROM builder AS neovim-builder
-
-USER builder
-WORKDIR /opt/builder/neovim-mainline
-
-RUN makepkg -s --noconfirm OPTIONS=-debug
-
-# merge
 FROM builder
 
+USER builder
 WORKDIR /opt/builder
 
-COPY --from=vim-builder /opt/builder/vim-mainline/*.tar.zst /opt/builder/vim-mainline/
-COPY --from=neovim-builder /opt/builder/neovim-mainline/*.tar.zst /opt/builder/neovim-mainline/
+RUN makepkg -s --noconfirm OPTIONS=-debug
