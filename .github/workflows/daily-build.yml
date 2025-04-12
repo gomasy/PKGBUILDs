@@ -82,6 +82,6 @@ jobs:
           cp */*.pkg.tar.zst dist
           cd dist
           ls -l
-          tar -cf ../build.tar.gz *.tar.zst
+          tar -cf ../build.tar.gz *.pkg.tar.zst
           cd ..
           curl -H "X-Token:$_TOKEN" -H "X-Repo:pkgbuilds" -F build=@build.tar.gz https://gomasy.jp/api/v1/github/push
