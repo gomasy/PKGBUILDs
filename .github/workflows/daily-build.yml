@@ -12,49 +12,52 @@ jobs:
         include:
           - package: vim-mainline
             repo: https://github.com/vim/vim.git
-            commit: ${{ vars.VIM_MAINLINE_COMMIT_ID }}
           - package: neovim-mainline
             repo: https://github.com/neovim/neovim.git
-            commit: ${{ vars.NEOVIM_MAINLINE_COMMIT_ID }}
           - package: tree-sitter-mainline
             repo: https://github.com/tree-sitter/tree-sitter.git
-            commit: ${{ vars.TREE_SITTER_MAINLINE_COMMIT_ID }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Check eligibility
+        env:
+          GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
+          _PACKAGE=${{ matrix.package }}
+          _PACKAGE=${_PACKAGE^^}
+          _PREVIOUS_COMMIT=$(gh variable get ${_PACKAGE//-/_}_COMMIT_ID)
+          echo "_PREVIOUS_COMMIT=$_PREVIOUS_COMMIT" >> $GITHUB_ENV
           git clone ${{ matrix.repo }} repo
           _COMMIT=$(git -C repo rev-parse HEAD)
           echo "_COMMIT=$_COMMIT" >> $GITHUB_ENV
           rm -rf repo
-          echo "Previous commit id: ${{ matrix.commit }}"
+          echo "Previous commit id: $_PREVIOUS_COMMIT"
           echo "Current commit id: $_COMMIT"
 
       - name: Set up Docker Buildx
-        if: ${{ env._COMMIT != matrix.commit }}
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         uses: docker/setup-buildx-action@v3
 
       - name: Build
-        if: ${{ env._COMMIT != matrix.commit }}
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         run: |
           cd ${{ matrix.package }}
           cp ../Dockerfile .
           docker build -t dist .
 
       - name: Export
-        if: ${{ env._COMMIT != matrix.commit }}
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         run: docker run -v "./dist:/opt/builder/dist" --user root --rm dist sh -c "cp *.pkg.tar.zst dist"
 
       - name: Upload artifact
-        if: ${{ env._COMMIT != matrix.commit }}
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.package }}
           path: ./dist/*.pkg.tar.zst
 
       - name: Update current commit
-        if: ${{ env._COMMIT != matrix.commit }}
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         env:
           GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
