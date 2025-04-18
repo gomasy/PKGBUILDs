@@ -15,6 +15,7 @@ jobs:
         package:
           - vim-mainline
           - neovim-mainline
+          - tree-sitter-mainline
     steps:
       - uses: actions/checkout@v4
 
