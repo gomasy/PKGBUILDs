@@ -19,12 +19,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up GitHub CLI
+        run: |
+          curl -sS https://webi.sh/gh | sh
+          source ~/.config/envman/PATH.env
+
       - name: Check eligibility
         env:
           GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
-          curl -sS https://webi.sh/gh | sh
-          source ~/.config/envman/PATH.env
           _ARCH=$(uname -m)
           echo "_ARCH=$_ARCH" >> $GITHUB_ENV
           _PACKAGE=${{ matrix.package }}
@@ -71,8 +74,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
-          curl -sS https://webi.sh/gh | sh
-          source ~/.config/envman/PATH.env
           _PACKAGE=${{ matrix.package }}
           _PACKAGE=${_PACKAGE^^}
           gh variable set ${_PACKAGE//-/_}_COMMIT_ID_${_ARCH^^} --body $_COMMIT
