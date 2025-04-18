@@ -16,6 +16,7 @@ jobs:
           - ubuntu-latest
           - self-hosted
         package:
+          - libreswan
           - mackerel-agent
           - minio-modified
           - nginx-mainline-mod-brotli
