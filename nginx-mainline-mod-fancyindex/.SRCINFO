@@ -4,6 +4,7 @@ pkgbase = nginx-mainline-mod-fancyindex
 	pkgrel = 11
 	url = https://www.nginx.com/resources/wiki/modules/fancy_index/
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline

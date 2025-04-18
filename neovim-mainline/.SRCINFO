@@ -4,6 +4,7 @@ pkgbase = neovim
 	pkgrel = 1
 	url = https://neovim.io
 	arch = x86_64
+	arch = aarch64
 	license = Apache-2.0
 	license = LicenseRef-vim
 	makedepends = cmake

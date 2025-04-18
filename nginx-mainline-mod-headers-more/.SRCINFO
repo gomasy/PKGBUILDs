@@ -4,6 +4,7 @@ pkgbase = nginx-mainline-mod-headers-more
 	pkgrel = 2
 	url = https://github.com/openresty/headers-more-nginx-module
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline

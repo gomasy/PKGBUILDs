@@ -4,6 +4,7 @@ pkgbase = vim
 	pkgrel = 1
 	url = http://www.vim.org
 	arch = x86_64
+	arch = aarch64
 	license = custom:vim
 	makedepends = gawk
 	makedepends = git

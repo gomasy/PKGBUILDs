@@ -4,6 +4,7 @@ pkgbase = mackerel-agent
 	pkgrel = 1
 	url = https://github.com/mackerelio/mackerel-agent
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	makedepends = go-pie
 	depends = glibc

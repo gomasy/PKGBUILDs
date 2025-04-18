@@ -4,18 +4,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.platform }}
     continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - package: vim-mainline
-            repo: https://github.com/vim/vim.git
-          - package: neovim-mainline
-            repo: https://github.com/neovim/neovim.git
-          - package: tree-sitter-mainline
-            repo: https://github.com/tree-sitter/tree-sitter.git
+        platform:
+          - ubuntu-latest
+          - self-hosted
+        package:
+          - vim-mainline
+          - neovim-mainline
     steps:
       - uses: actions/checkout@v4
 
@@ -23,11 +22,16 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
+          curl -sS https://webi.sh/gh | sh
+          source ~/.config/envman/PATH.env
+          _ARCH=$(uname -m)
+          echo "_ARCH=$_ARCH" >> $GITHUB_ENV
           _PACKAGE=${{ matrix.package }}
+          _REPO_URL=$(cat $_PACKAGE/.SRCINFO | grep source | awk '{print $3}' | head -n 1 | sed 's/git+//')
           _PACKAGE=${_PACKAGE^^}
-          _PREVIOUS_COMMIT=$(gh variable get ${_PACKAGE//-/_}_COMMIT_ID)
+          _PREVIOUS_COMMIT=$(gh variable get ${_PACKAGE//-/_}_COMMIT_ID_${_ARCH^^})
           echo "_PREVIOUS_COMMIT=$_PREVIOUS_COMMIT" >> $GITHUB_ENV
-          git clone ${{ matrix.repo }} repo
+          git clone $_REPO_URL repo
           _COMMIT=$(git -C repo rev-parse HEAD)
           echo "_COMMIT=$_COMMIT" >> $GITHUB_ENV
           rm -rf repo
@@ -47,31 +51,46 @@ jobs:
 
       - name: Export
         if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
-        run: docker run -v "./dist:/opt/builder/dist" --user root --rm dist sh -c "cp *.pkg.tar.zst dist"
+        run: |
+          docker run -v "./dist:/opt/builder/dist" --user root --rm dist sh -c "cp *.pkg.* dist"
+          _DIR=${{ matrix.package }}-$_ARCH
+          mkdir $_DIR
+          cp dist/*.pkg.* $_DIR
+          zip -r dist.zip $_DIR
 
       - name: Upload artifact
         if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.package }}
-          path: ./dist/*.pkg.tar.zst
+          name: ${{ matrix.package }}-${{ env._ARCH }}
+          path: dist.zip
 
       - name: Update current commit
         if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
         env:
           GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
         run: |
+          curl -sS https://webi.sh/gh | sh
+          source ~/.config/envman/PATH.env
           _PACKAGE=${{ matrix.package }}
           _PACKAGE=${_PACKAGE^^}
-          gh variable set ${_PACKAGE//-/_}_COMMIT_ID --body $_COMMIT
+          gh variable set ${_PACKAGE//-/_}_COMMIT_ID_${_ARCH^^} --body $_COMMIT
 
   deploy:
     runs-on: ubuntu-latest
     needs:
       - build
+    strategy:
+      fail-fast: false
+      matrix:
+        arch:
+          - x86_64
+          - aarch64
     steps:
       - name: Prepare artifact
         uses: actions/download-artifact@v4
+        with:
+          pattern: "*-${{ matrix.arch }}"
 
       - name: Check eligibility
         run: echo "_PACKAGES_COUNT=$(ls | wc -l)" >> $GITHUB_ENV
@@ -81,10 +100,11 @@ jobs:
         env:
           _TOKEN: ${{ secrets._TOKEN }}
         run: |
+          find . -type f -name "*.zip" -exec unzip {} \;
           mkdir dist
-          cp */*.pkg.tar.zst dist
+          cp */*.pkg.* dist
           cd dist
           ls -l
-          tar -cf ../build.tar.gz *.pkg.tar.zst
+          tar -cf ../build.tar.gz *.pkg.*
           cd ..
-          curl -H "X-Token:$_TOKEN" -H "X-Repo:pkgbuilds" -F build=@build.tar.gz https://gomasy.jp/api/v1/github/push
+          curl -H "X-Token:$_TOKEN" -H "X-Repo:pkgbuilds" -H "X-Param:${{ matrix.arch }}" -F build=@build.tar.gz https://gomasy.jp/api/v1/github/push

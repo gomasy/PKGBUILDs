@@ -5,6 +5,7 @@ pkgbase = otelcol
 	url = https://github.com/open-telemetry/opentelemetry-collector
 	install = otelcol.install
 	arch = x86_64
+	arch = aarch64
 	groups = open-telemetry
 	license = APACHE
 	makedepends = go

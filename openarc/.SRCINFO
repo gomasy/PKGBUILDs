@@ -4,6 +4,7 @@ pkgbase = openarc
 	pkgrel = 1
 	url = https://github.com/trusteddomainproject/OpenARC
 	arch = x86_64
+	arch = aarch64
 	license = BSD-2-Clause
 	license = LicenseRef-Sendmail-1.1
 	makedepends = libmilter

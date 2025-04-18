@@ -8,7 +8,7 @@ pkgrel=2
 _modname="${pkgname#nginx-mainline-mod-}"
 
 pkgdesc="Set and clear input and output headers (module for mainline nginx)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 depends=('nginx-mainline')
 makedepends=('nginx-mainline-src')
 url="https://github.com/openresty/headers-more-nginx-module"

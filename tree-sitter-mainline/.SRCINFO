@@ -4,6 +4,7 @@ pkgbase = tree-sitter-mainline
 	pkgrel = 1
 	url = https://tree-sitter.github.io/tree-sitter/
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	depends = glibc
