@@ -20,17 +20,20 @@ backup=(
     etc/$pkgname/config.yaml
 )
 install=$pkgname.install
-source=("ocb::${url}-releases/releases/download/cmd%2Fbuilder%2Fv${pkgver}/ocb_${pkgver}_linux_amd64"
+source=(
     "$pkgname.service"
     "$pkgname.conf"
     "config.yaml"
     "builder-config.yaml"
 )
-sha512sums=('4660d911b49b059a9744179f5c322058805efc43324fcba09c251e1f7635f1366e64e36886100087cb03f1a9fdda0d01d52e68acacaa64e7ddb67eb3c6a2f558'
-            '351cb7da00ae09559ca3e48932c1f0e0a8ccd4f1bff982ce2ce8ab3b50b5eec3715f2e21c9c12d04568f6b764588a92f4641c741b148080b0222e591fb691102'
+source_x86_64=("ocb::${url}-releases/releases/download/cmd%2Fbuilder%2Fv${pkgver}/ocb_${pkgver}_linux_amd64")
+source_aarch64=("ocb::${url}-releases/releases/download/cmd%2Fbuilder%2Fv${pkgver}/ocb_${pkgver}_linux_arm64")
+sha512sums=('351cb7da00ae09559ca3e48932c1f0e0a8ccd4f1bff982ce2ce8ab3b50b5eec3715f2e21c9c12d04568f6b764588a92f4641c741b148080b0222e591fb691102'
             'f51d0e59bcdcf0c1f871de1667ed15f3f500cde6aabe78d8a596c238b8a1a1daa59831a203756ac372e5c753c0db75786612c93b65b99542c2a0ffcb5023e1e4'
             '50f13556ccce7464544bc48f1f9e23a074fb13fe433a0142e6694286791d85254532ba4751b8d615052dfdc4bb69556de8b4f67b9eeb2d2acee0f25bc29fad8f'
             '7eec21a385ff4764162205d97e84f367f045d31be6148b06f563621f4b851452ee1cbf28d07858600652c6c3e6d4c27cce434fbb91a5ebcc228b0803e258df2a')
+sha512sums_x86_64=('4660d911b49b059a9744179f5c322058805efc43324fcba09c251e1f7635f1366e64e36886100087cb03f1a9fdda0d01d52e68acacaa64e7ddb67eb3c6a2f558')
+sha512sums_aarch64=('d890ae7ee8538ccc686efcef959e0d8975e20f3cf9c9c585c17931205ebb6e7a02e8f1327faf629992339911f2a3f50f69ef8a2ffda5d35e67b76ae39ccdd043')
 
 prepare() {
     chmod +x ocb
