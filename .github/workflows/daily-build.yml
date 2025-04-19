@@ -110,4 +110,4 @@ jobs:
           ls -l
           tar -cf ../build.tar.gz *.pkg.*
           cd ..
-          curl -H "X-Token:$_TOKEN" -H "X-Repo:pkgbuilds" -H "X-Param:${{ matrix.arch }}" -F build=@build.tar.gz https://gomasy.jp/api/v1/github/push
+          curl -H "X-Token:$_TOKEN" -H "X-Repo:pkgbuilds" -H "X-Param:${{ matrix.arch }}" -F build=@build.tar.gz https://api.gomasy.jp/v1/github/push
