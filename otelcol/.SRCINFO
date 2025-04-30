@@ -1,6 +1,6 @@
 pkgbase = otelcol
 	pkgdesc = OpenTelemetry Collector Local binary
-	pkgver = 0.124.0
+	pkgver = 0.125.0
 	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-collector
 	install = otelcol.install
@@ -20,10 +20,10 @@ pkgbase = otelcol
 	sha512sums = 351cb7da00ae09559ca3e48932c1f0e0a8ccd4f1bff982ce2ce8ab3b50b5eec3715f2e21c9c12d04568f6b764588a92f4641c741b148080b0222e591fb691102
 	sha512sums = f51d0e59bcdcf0c1f871de1667ed15f3f500cde6aabe78d8a596c238b8a1a1daa59831a203756ac372e5c753c0db75786612c93b65b99542c2a0ffcb5023e1e4
 	sha512sums = 50f13556ccce7464544bc48f1f9e23a074fb13fe433a0142e6694286791d85254532ba4751b8d615052dfdc4bb69556de8b4f67b9eeb2d2acee0f25bc29fad8f
-	sha512sums = 7eec21a385ff4764162205d97e84f367f045d31be6148b06f563621f4b851452ee1cbf28d07858600652c6c3e6d4c27cce434fbb91a5ebcc228b0803e258df2a
-	source_x86_64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.124.0/ocb_0.124.0_linux_amd64
-	sha512sums_x86_64 = 4660d911b49b059a9744179f5c322058805efc43324fcba09c251e1f7635f1366e64e36886100087cb03f1a9fdda0d01d52e68acacaa64e7ddb67eb3c6a2f558
-	source_aarch64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.124.0/ocb_0.124.0_linux_arm64
-	sha512sums_aarch64 = d890ae7ee8538ccc686efcef959e0d8975e20f3cf9c9c585c17931205ebb6e7a02e8f1327faf629992339911f2a3f50f69ef8a2ffda5d35e67b76ae39ccdd043
+	sha512sums = 394358090c5f9317b68ddf4a60b7ca32c240d65cd3f15dd82b2713a6e4efe5916853c1c04f09bb53fbeae3b6424136e895c3f3fa201c9d79c0bc1df8374201c6
+	source_x86_64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.125.0/ocb_0.125.0_linux_amd64
+	sha512sums_x86_64 = 05232aef598721ea734e447cb6c88663c4b4725c55e7be3cb85190d49c5da3da74f24e6587acecfd1277d170ed991b0f3204722b2b9035806f97d97db14d995e
+	source_aarch64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.125.0/ocb_0.125.0_linux_arm64
+	sha512sums_aarch64 = e29a5a1e9410761b5fc5da4bfce55460f10fb234da46907f07bd1d3c644488380c475881bc6f4c4b88fb7dfce91df9de7676ee81f24d9680bf7d409071e4d9ea
 
 pkgname = otelcol
