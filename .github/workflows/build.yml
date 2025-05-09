@@ -16,6 +16,7 @@ jobs:
           - ubuntu-latest
           - self-hosted
         package:
+          - asterisk-lts-18
           - libreswan
           - mackerel-agent
           - minio-modified
