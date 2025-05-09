@@ -22,7 +22,6 @@ options=(!buildflags)
 depends=(alsa-lib
          curl
          gsm
-         imap
          jansson
          libedit
          libsrtp
@@ -180,16 +179,12 @@ sha256sums=('5df5d1c3885428b8bf03e78d7b8c3079d4512679137ef1d47e865dc2058aa825'
 build() {
     cd "$_archive"
 
-    # Work around Cyrus bug #2629
-    # https://github.com/cyrusimap/cyrus-imapd/issues/2629
-    export LDFLAGS="${LDFLAGS/,--as-needed}"
-
     ./configure \
         --prefix=/usr \
         --sysconfdir=/etc \
         --localstatedir=/var \
         --sbindir=/usr/bin \
-        --with-imap=system
+        --without-imap
 
 	make MENUSELECT_CFLAGS= OPTIMIZE= DEBUG= ASTVARRUNDIR=/run/asterisk NOISY_BUILD=1
 }

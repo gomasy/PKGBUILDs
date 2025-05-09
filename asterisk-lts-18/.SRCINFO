@@ -11,7 +11,6 @@ pkgbase = asterisk-lts-18
 	depends = alsa-lib
 	depends = curl
 	depends = gsm
-	depends = imap
 	depends = jansson
 	depends = libedit
 	depends = libsrtp
