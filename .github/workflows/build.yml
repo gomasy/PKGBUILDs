@@ -20,7 +20,6 @@ jobs:
           - libreswan
           - mackerel-agent
           - minio-modified
-          - ndppd
           - nginx-mainline-mod-brotli
           - nginx-mainline-mod-fancyindex
           - nginx-mainline-mod-headers-more
