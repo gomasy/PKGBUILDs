@@ -6,6 +6,7 @@ pkgbase = ndppd
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = asciidoctor
 	makedepends = git
 	backup = etc/ndppd.conf
 	source = git+https://github.com/DanielAdolfsson/ndppd#branch=1.0-devel

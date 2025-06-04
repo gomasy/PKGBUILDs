@@ -9,7 +9,7 @@ url='https://github.com/DanielAdolfsson/ndppd'
 license=("GPL3")
 arch=('x86_64' 'aarch64')
 backup=('etc/ndppd.conf')
-makedepends=('git')
+makedepends=('asciidoctor' 'git')
 
 source=("git+https://github.com/DanielAdolfsson/ndppd#branch=${_pkgver}"
         "ndppd.service")
