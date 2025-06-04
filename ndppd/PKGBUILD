@@ -20,6 +20,7 @@ sha256sums=('SKIP'
 build() {
   cd "${pkgname}"
 
+  export CFLAGS="-Wno-address-of-packed-member ${CFLAGS}"
   make PREFIX=/usr all
 }
 
