@@ -2,7 +2,7 @@
 # Contributor: Roger Coll <rogercoll at protonmail dot com>
 
 pkgname=otelcol
-pkgver=0.131.0
+pkgver=0.130.1
 pkgrel=1
 epoch=
 pkgdesc="OpenTelemetry Collector Local binary"

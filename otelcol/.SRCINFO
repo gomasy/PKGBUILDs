@@ -1,6 +1,6 @@
 pkgbase = otelcol
 	pkgdesc = OpenTelemetry Collector Local binary
-	pkgver = 0.131.0
+	pkgver = 0.130.1
 	pkgrel = 1
 	url = https://github.com/open-telemetry/opentelemetry-collector
 	install = otelcol.install
@@ -21,9 +21,9 @@ pkgbase = otelcol
 	sha512sums = f51d0e59bcdcf0c1f871de1667ed15f3f500cde6aabe78d8a596c238b8a1a1daa59831a203756ac372e5c753c0db75786612c93b65b99542c2a0ffcb5023e1e4
 	sha512sums = 50f13556ccce7464544bc48f1f9e23a074fb13fe433a0142e6694286791d85254532ba4751b8d615052dfdc4bb69556de8b4f67b9eeb2d2acee0f25bc29fad8f
 	sha512sums = 66c4a87d41caeff1745c89f7494b14cc1c6186839318b9fd98904c5ccec7f2d555dda21de570596c8f63179e120db734fcf976628cef664a5b7d1084708b104f
-	source_x86_64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.131.0/ocb_0.131.0_linux_amd64
+	source_x86_64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.130.1/ocb_0.130.1_linux_amd64
 	sha512sums_x86_64 = 89d93db927c69fdd593f3d93c07af4581da6b7e3bf07383acffec5aefa6f06f3f4d298ff997f06912e632e4b28ad0b9000d5e64d9b14620ac848a109eedf4453
-	source_aarch64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.131.0/ocb_0.131.0_linux_arm64
+	source_aarch64 = ocb::https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/cmd%2Fbuilder%2Fv0.130.1/ocb_0.130.1_linux_arm64
 	sha512sums_aarch64 = 506d0a209a84d8cc1e88bb86e640fc0bef6e89b792121ea82e2a5016db550d684d4d8f998895c575c1bcbfc178d769ce7feb697b1839b282ec167bc3e646435f
 
 pkgname = otelcol
