@@ -2,8 +2,8 @@
 # Contributor: Roger Coll <rogercoll at protonmail dot com>
 
 pkgname=otelcol
-pkgver=0.134.0
-pkgrel=2
+pkgver=0.135.0
+pkgrel=1
 epoch=
 pkgdesc="OpenTelemetry Collector Local binary"
 arch=('x86_64' 'aarch64')
@@ -31,9 +31,9 @@ source_aarch64=("ocb::${url}-releases/releases/download/cmd%2Fbuilder%2Fv${pkgve
 sha512sums=('351cb7da00ae09559ca3e48932c1f0e0a8ccd4f1bff982ce2ce8ab3b50b5eec3715f2e21c9c12d04568f6b764588a92f4641c741b148080b0222e591fb691102'
             'f51d0e59bcdcf0c1f871de1667ed15f3f500cde6aabe78d8a596c238b8a1a1daa59831a203756ac372e5c753c0db75786612c93b65b99542c2a0ffcb5023e1e4'
             '50f13556ccce7464544bc48f1f9e23a074fb13fe433a0142e6694286791d85254532ba4751b8d615052dfdc4bb69556de8b4f67b9eeb2d2acee0f25bc29fad8f'
-            '63e426c21a1ace13ec7ea186d2fea9ab0f8b90eee9e3b34b2939aed2f3f0d6d5f27e42b9c2e9d72ce1bad956873f0ff0d2155ded9b783b72c560c4669db19d0e')
-sha512sums_x86_64=('956b58e9f4bfb641e45ecdda2236a6e990e46e4e146145a8fc5203e888b598230b5fab9ae973ccd9a2bf053a1192ba7cec84a7776b40d6f5568fad47b2b20695')
-sha512sums_aarch64=('9c2908dc4a91478c5cc70a2c1185e08795584648c0d268a8f3a27d8d784d9fc136d0137ee1d12a0ce35e0229f4ab0795c63a7b3d71a0a86e29f00cd77e1c9e70')
+            'f67fc3dd0602f81d48e343c72bd2115bbc3d8b32b0b3bea47261c0180bd96296c5a6052f39fded9b8875b5ce4521d3d859573b3082e3a71bbed254348a29dee0')
+sha512sums_x86_64=('4aaf85b3d2da1758dd4f38b96c79c6071b8c00316a41d253ccc4f014d4f251daf701032cdf2405f09ac384897faba4ba68dd0a8b3a020b1cf9c4cc216dc7238d')
+sha512sums_aarch64=('7c2bf42cb2ee207d8b517f72b2a35653e1ef8b33fac0a86de13f73656321e6dcc3ff193814426f4872011b525bb5ef8b9a559a827bf394c27dbc8bcb5ce0cada')
 
 prepare() {
     chmod +x ocb
