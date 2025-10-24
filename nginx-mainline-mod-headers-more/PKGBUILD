@@ -3,7 +3,7 @@
 
 pkgname=nginx-mainline-mod-headers-more
 pkgver=0.39
-pkgrel=2
+pkgrel=3
 
 _modname="${pkgname#nginx-mainline-mod-}"
 
