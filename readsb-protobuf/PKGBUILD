@@ -41,6 +41,8 @@ pkgver() {
 }
 
 build() {
+  export CFLAGS="$CFLAGS -Wno-unterminated-string-initialization"
+
   cd "${srcdir}/${pkgname}"
   make -j1 BLADERF=yes RTLSDR=yes PLUTOSDR=yes
 }
