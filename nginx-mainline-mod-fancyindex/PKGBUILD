@@ -6,7 +6,7 @@
 
 pkgname=nginx-mainline-mod-fancyindex
 pkgver=0.5.2
-pkgrel=16
+pkgrel=17
 _modname="${pkgname#nginx-mainline-mod-}"
 pkgdesc="Fancy index module for the nginx-mainline web server"
 arch=('x86_64' 'aarch64')
