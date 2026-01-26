@@ -12,7 +12,7 @@ RUN pacman-key --init && \
     pacman -Syu --noconfirm base-devel && \
     useradd -d /opt/builder builder && \
     echo "builder ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-    sed -i -e '/^OPTIONS=/s/debug/!debug/' /etc/makepkg.conf && \
+    sed -i -e '/^OPTIONS=/s/ debug/ !debug/' /etc/makepkg.conf && \
     echo 'PACKAGER="Gomasy <nyan@gomasy.jp>"' >> /etc/makepkg.conf
 
 COPY --chown=builder:builder . /opt/builder
