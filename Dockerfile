@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.12
-FROM gmanka/archlinuxarm:latest AS builder
+FROM menci/archlinuxarm:latest AS builder
 
 RUN pacman-key --init && \
     pacman-key --populate archlinux && \
