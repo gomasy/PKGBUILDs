@@ -66,6 +66,7 @@ _confs=(acl.conf
         cel_tds.conf
         chan_dahdi.conf
         chan_mobile.conf
+        chan_websocket.conf
         cli.conf
         cli_aliases.conf
         cli_permissions.conf
@@ -197,13 +198,13 @@ package(){
 			<(IFS=$'\n'; echo "${_backs[*]}" | sort) &&
 		exit 1)
 
-	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/${_pkg}/asterisk.conf"
+	sed -i -e 's,/var/run,/run,' "$pkgdir/etc/${_pkg}/${_pkg}.conf"
 	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkg}/examples" "$pkgdir/etc/${_pkg}/"*
 
 	mv "$pkgdir/var/run" "$pkgdir"
 
 	pushd contrib/systemd
-	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "$pkname"*.{service,socket}
+	install -Dm644 -t "$pkgdir/usr/lib/systemd/system/" "${_pkg}"*.{service,socket}
 
 	pushd "$srcdir"
 	install -Dm644 "${_pkg}.sysusers" "$pkgdir/usr/lib/sysusers.d/${_pkg}.conf"

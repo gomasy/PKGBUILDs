@@ -58,6 +58,7 @@ pkgbase = asterisk-lts-22
 	backup = etc/asterisk/cel_tds.conf
 	backup = etc/asterisk/chan_dahdi.conf
 	backup = etc/asterisk/chan_mobile.conf
+	backup = etc/asterisk/chan_websocket.conf
 	backup = etc/asterisk/cli.conf
 	backup = etc/asterisk/cli_aliases.conf
 	backup = etc/asterisk/cli_permissions.conf
