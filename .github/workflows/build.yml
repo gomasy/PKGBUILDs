@@ -26,7 +26,7 @@ jobs:
           - openarc
           - otelcol
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set up GitHub CLI
         if: ${{ matrix.platform == 'self-hosted' }}
@@ -74,7 +74,7 @@ jobs:
 
       - name: Upload artifact
         if: ${{ env._PKGVER != env._PREVIOUS_PKGVER }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: ${{ matrix.package }}-${{ env._ARCH }}
           path: dist.zip
@@ -100,7 +100,7 @@ jobs:
           - aarch64
     steps:
       - name: Prepare artifact
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v7
         with:
           pattern: "*-${{ matrix.arch }}"
 
