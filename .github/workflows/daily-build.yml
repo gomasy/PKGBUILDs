@@ -5,25 +5,20 @@ on:
 jobs:
   build:
     runs-on: ${{ matrix.platform }}
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
     continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
         platform:
           - ubuntu-latest
-          - self-hosted
+          - ubuntu-24.04-arm
         package:
           - vim-mainline
           - neovim-mainline
           - tree-sitter-mainline
     steps:
       - uses: actions/checkout@v6
-
-      - name: Set up GitHub CLI
-        if: ${{ matrix.platform == 'self-hosted' }}
-        run: |
-          curl -sS https://webi.sh/gh | sh
-          source ~/.config/envman/PATH.env
 
       - name: Check eligibility
         env:
