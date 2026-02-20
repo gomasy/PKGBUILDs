@@ -27,6 +27,11 @@ pkgver() {
   printf "%s.r%s.g%s" "$_tag" "$_rev" "$_hash" | sed 's/^v//'
 }
 
+prepare() {
+  cd $pkgbase/cli
+  cargo fetch --locked --target "$(rustc --print host-tuple)"
+}
+
 build() {
   cd $pkgbase
   cmake -S lib -B build \
