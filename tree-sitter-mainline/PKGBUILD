@@ -3,24 +3,23 @@
 # Contributor: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Filipe Laíns (FFY00) <lains@archlinux.org>
 
-pkgname=tree-sitter-mainline
-pkgver=0.22.6.r58.g779566f5
+pkgbase=tree-sitter
+pkgname=(
+  tree-sitter-mainline
+  tree-sitter-mainline-cli
+)
+pkgver=0.26.5.r117.ga21ee0271
 pkgrel=1
-pkgdesc="An incremental parsing system for programming tools"
 arch=('x86_64' 'aarch64')
-url="https://tree-sitter.github.io/tree-sitter/"
+url="https://tree-sitter.github.io/tree-sitter"
 license=('MIT')
-depends=('glibc')
-makedepends=('git')
-provides=("tree-sitter=$pkgver" 'libtree-sitter.so')
-conflicts=('tree-sitter')
-options=('staticlibs')
+makedepends=('cmake' 'git' 'rust')
+options=(!lto) # Needed for CLI build
 source=("git+https://github.com/tree-sitter/tree-sitter.git")
 sha256sums=('SKIP')
 
-
 pkgver() {
-  cd "tree-sitter"
+  cd $pkgbase
 
   _tag=$(git tag -l --sort -v:refname | grep -E '^v?[0-9\.]+$' | head -n1)
   _rev=$(git rev-list --count $_tag..HEAD)
@@ -29,18 +28,45 @@ pkgver() {
 }
 
 build() {
-  cd "tree-sitter"
+  cd $pkgbase
+  cmake -S lib -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON # Enable LTO
+  cmake --build build
 
-  CFLAGS="$CFLAGS -ffat-lto-objects" \
-  make
+  cd cli
+  cargo build --release --locked --offline
+
+  for completion in bash elvish fish nushell zsh; do
+    cargo run --frozen --release -- \
+      complete --shell $completion > $completion-completions
+  done
 }
 
-package() {
-  cd "tree-sitter"
+package_tree-sitter-mainline() {
+  pkgdesc='Incremental parsing library'
+  provides=('tree-sitter=$pkgver' 'libtree-sitter.so')
+  conflicts=('tree-sitter')
 
-  make \
-    DESTDIR="$pkgdir" \
-    PREFIX="/usr" \
-    install
-  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/tree-sitter"
+  cd $pkgbase
+  DESTDIR="$pkgdir" cmake --install build
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgbase
+}
+
+package_tree-sitter-mainline-cli() {
+  pkgdesc='CLI tool for developing, testing, and using Tree-sitter parsers'
+  depends=('gcc-libs')
+  optdepends=('nodejs: for the generate subcommand')
+  conflicts=('tree-sitter-cli')
+
+  cd $pkgbase
+  install -Dt "$pkgdir"/usr/bin target/release/$pkgbase
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/${pkgbase}-cli LICENSE
+
+  cd cli
+  install -Dm644 bash-completions "$pkgdir"/usr/share/bash-completion/completions/$pkgbase
+  install -Dm644 elvish-completions "$pkgdir"/usr/share/elvish/lib/$pkgbase.elv
+  install -Dm644 fish-completions "$pkgdir"/usr/share/fish/vendor_completions.d/$pkgbase.fish
+  install -Dm644 nushell-completions "$pkgdir"/usr/share/nushell/vendor/autoload/$pkgbase.nu
+  install -Dm644 zsh-completions "$pkgdir"/usr/share/zsh/site-functions/_$pkgbase
 }
