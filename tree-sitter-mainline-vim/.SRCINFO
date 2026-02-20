@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-mainline-vim
+	pkgdesc = Vimscript grammar for tree-sitter
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-vim
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter-mainline-cli
+	provides = libtree-sitter-vim.so
+	conflicts = tree-sitter-vim
+	optdepends = tree-sitter-mainline: core library
+	source = git+https://github.com/tree-sitter-grammars/tree-sitter-vim.git#tag=v0.7.0
+	b2sums = 9d6b56a784adf29c9395eb212820d3e007b4ba98939f4debcb9856748fce90044911895a00deda48902dc5c154e49b189c654fb44f92e44db513ce31b2ec61f0
+
+pkgname = tree-sitter-mainline-vim

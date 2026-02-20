@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-mainline-vimdoc
+	pkgdesc = Vim help file grammar for tree-sitter
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://github.com/neovim/tree-sitter-vimdoc
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = tree-sitter-mainline-cli
+	provides = libtree-sitter-vimdoc.so
+	conflicts = tree-sitter-vimdoc
+	optdepends = tree-sitter-mainline: core library
+	source = git+https://github.com/neovim/tree-sitter-vimdoc.git#tag=v4.0.0
+	b2sums = a40ef9bb81f25cc63a1d7a2d079bd4b6ee2235882b04a5f74c2574e1fc9d9abb1890efdb5de69f33fcd2212e57cc4cec540599e9b791f79ea2a8234d9326eecb
+
+pkgname = tree-sitter-mainline-vimdoc

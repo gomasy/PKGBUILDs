@@ -1,0 +1,43 @@
+# Maintainer: Gomasy <nyan@gomasy.jp>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: ObserverOfTime <chronobserver@disroot.org>
+
+_pkg=tree-sitter-c
+pkgname=tree-sitter-mainline-c
+pkgver=0.24.1
+pkgrel=1
+pkgdesc='C grammar for tree-sitter'
+arch=(x86_64 aarch64)
+url=https://github.com/tree-sitter/tree-sitter-c
+license=(MIT)
+makedepends=(
+  git
+  tree-sitter-mainline-cli
+)
+optdepends=('tree-sitter-mainline: core library')
+provides=("lib${_pkg}.so")
+conflicts=(tree-sitter-c)
+source=("git+$url.git#commit=v$pkgver")
+b2sums=('30aee809f14e58300bb9f9f06adb7ecfa636a35cdf2f6e11d077a4cb5f75f42aeb4d8eb8b41a02b269d9a75b16b9309d802345e87fa014f8b8e4e6f23453be42')
+#validpgpkeys=(FCC13F47A6900D64239FF13BE67890ADC4227273) # Amaan Qureshi <amaanq12@gmail.com>
+
+prepare() {
+  cd $_pkg
+  tree-sitter generate src/grammar.json
+}
+
+build() {
+  cd $_pkg
+  make PREFIX=/usr PARSER_URL=$url
+}
+
+package() {
+  install -d "$pkgdir"/usr/lib/tree_sitter
+  ln -s /usr/lib/lib${_pkg}.so \
+    "$pkgdir"/usr/lib/tree_sitter/${_pkg#tree-sitter-}.so
+
+  cd $_pkg
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm644 -t "$pkgdir"/usr/share/doc/$pkgname README.md
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
+}

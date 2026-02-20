@@ -1,0 +1,17 @@
+pkgbase = tree-sitter-mainline-lua
+	pkgdesc = Lua grammar for tree-sitter
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/tree-sitter-grammars/tree-sitter-lua
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	makedepends = tree-sitter-mainline-cli
+	provides = libtree-sitter-lua.so
+	conflicts = tree-sitter-lua
+	optdepends = tree-sitter-mainline: core library
+	source = git+https://github.com/tree-sitter-grammars/tree-sitter-lua.git#tag=v0.4.0
+	b2sums = 3da021f6da12d4fec4bba516f1a050203f0ba2cb0faed750f5154c17fe99e84c57a2b4ae1d6df35db3a555e81c1ca6572ba84470b712060eed74b8d1d74048b3
+
+pkgname = tree-sitter-mainline-lua
