@@ -22,7 +22,7 @@ b2sums=('7a3251623d2470d0040cabcc63f3913bb881bcce8b1cba96543030bfb1f22ee2501da4d
 
 prepare() {
   cd $_pkg
-  tree-sitter generate --no-bindings src/grammar.json
+  tree-sitter generate src/grammar.json
 }
 
 build() {
