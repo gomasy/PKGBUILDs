@@ -28,7 +28,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgbase/cli
+  cd $pkgbase/crates/cli
   cargo fetch --locked --target "$(rustc --print host-tuple)"
 }
 
