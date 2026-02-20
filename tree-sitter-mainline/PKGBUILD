@@ -34,12 +34,12 @@ prepare() {
 
 build() {
   cd $pkgbase
-  cmake -S lib -B build \
+  cmake -S . -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON # Enable LTO
   cmake --build build
 
-  cd cli
+  cd crates/cli
   cargo build --release --locked --offline
 
   for completion in bash elvish fish nushell zsh; do
@@ -68,7 +68,7 @@ package_tree-sitter-mainline-cli() {
   install -Dt "$pkgdir"/usr/bin target/release/$pkgbase
   install -Dm644 -t "$pkgdir"/usr/share/licenses/${pkgbase}-cli LICENSE
 
-  cd cli
+  cd crates/cli
   install -Dm644 bash-completions "$pkgdir"/usr/share/bash-completion/completions/$pkgbase
   install -Dm644 elvish-completions "$pkgdir"/usr/share/elvish/lib/$pkgbase.elv
   install -Dm644 fish-completions "$pkgdir"/usr/share/fish/vendor_completions.d/$pkgbase.fish
