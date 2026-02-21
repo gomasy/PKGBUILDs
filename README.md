@@ -18,12 +18,6 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [otelcol](otelcol/) | OpenTelemetry Collector binary |
 | [readsb-protobuf](readsb-protobuf/) | Mode-S/ADS-B/TIS decoder for RTLSDR and other devices |
 | [tree-sitter-mainline](tree-sitter-mainline/) | Incremental parsing system for programming tools, built from mainline |
-| [tree-sitter-mainline-c](tree-sitter-mainline-c/) | C grammar for tree-sitter, built against tree-sitter-mainline |
-| [tree-sitter-mainline-lua](tree-sitter-mainline-lua/) | Lua grammar for tree-sitter, built against tree-sitter-mainline |
-| [tree-sitter-mainline-markdown](tree-sitter-mainline-markdown/) | Markdown grammar for tree-sitter, built against tree-sitter-mainline |
-| [tree-sitter-mainline-query](tree-sitter-mainline-query/) | TS query grammar for tree-sitter, built against tree-sitter-mainline |
-| [tree-sitter-mainline-vim](tree-sitter-mainline-vim/) | Vimscript grammar for tree-sitter, built against tree-sitter-mainline |
-| [tree-sitter-mainline-vimdoc](tree-sitter-mainline-vimdoc/) | Vim help file grammar for tree-sitter, built against tree-sitter-mainline |
 | [vim-mainline](vim-mainline/) | Vi IMproved, built from the latest mainline source |
 
 ## Building
