@@ -26,12 +26,6 @@ jobs:
           - nginx-mainline-mod-headers-more
           - openarc
           - otelcol
-          - tree-sitter-mainline-c
-          - tree-sitter-mainline-lua
-          - tree-sitter-mainline-markdown
-          - tree-sitter-mainline-query
-          - tree-sitter-mainline-vim
-          - tree-sitter-mainline-vimdoc
     steps:
       - uses: actions/checkout@v6
 
