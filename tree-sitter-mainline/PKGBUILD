@@ -50,7 +50,7 @@ build() {
 
 package_tree-sitter-mainline() {
   pkgdesc='Incremental parsing library'
-  provides=('tree-sitter=$pkgver' 'libtree-sitter.so')
+  provides=("tree-sitter=$pkgver" 'libtree-sitter.so')
   conflicts=('tree-sitter')
 
   cd $pkgbase

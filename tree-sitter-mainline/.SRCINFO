@@ -5,6 +5,7 @@ pkgbase = tree-sitter
 	arch = x86_64
 	arch = aarch64
 	license = MIT
+	makedepends = clang
 	makedepends = cmake
 	makedepends = git
 	makedepends = rust
@@ -14,7 +15,7 @@ pkgbase = tree-sitter
 
 pkgname = tree-sitter-mainline
 	pkgdesc = Incremental parsing library
-	provides = tree-sitter=$pkgver
+	provides = tree-sitter=0.26.5.r117.ga21ee0271
 	provides = libtree-sitter.so
 	conflicts = tree-sitter
 
