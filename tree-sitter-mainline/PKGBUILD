@@ -9,7 +9,7 @@ pkgname=(
   tree-sitter-mainline-cli
 )
 pkgver=0.26.5.r117.ga21ee0271
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://tree-sitter.github.io/tree-sitter"
 license=('MIT')
