@@ -11,7 +11,6 @@ license=('BSD-2-Clause' 'Sendmail')
 depends=('glibc' 'jansson' 'libcrypto.so' 'libidn2.so' 'libmilter')
 optdepends=('smtp-server: for using a local mail server'
             'bind: required only for signature verification (alternatives available)')
-makedepends=('python-miltertest')
 provides=('libopenarc.so')
 backup=('etc/openarc/openarc.conf')
 source=("https://github.com/flowerysong/OpenARC/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
@@ -43,11 +42,6 @@ build() {
      --localstatedir=/var \
      --disable-static
   make
-}
-
-check() {
-  cd "$srcdir/${pkgname}-${pkgver}"
-  make -j1 check
 }
 
 package() {

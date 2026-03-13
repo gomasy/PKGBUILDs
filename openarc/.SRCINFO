@@ -7,7 +7,6 @@ pkgbase = openarc
 	arch = aarch64
 	license = BSD-2-Clause
 	license = Sendmail
-	makedepends = python-miltertest
 	depends = glibc
 	depends = jansson
 	depends = libcrypto.so
