@@ -1,6 +1,6 @@
 pkgbase = minio-modified
 	pkgdesc = Object storage server compatible with Amazon S3
-	pkgver = 2026.02.14
+	pkgver = 2026.03.14
 	pkgrel = 1
 	url = https://minio.io
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = minio-modified
 	provides = minio
 	conflicts = minio
 	backup = etc/minio/minio.conf
-	source = git+https://github.com/gomasy/minio.git#tag=RELEASE.2026-02-14T12-00-00Z
+	source = git+https://github.com/gomasy/minio.git#tag=RELEASE.2026-03-14T12-00-00Z
 	source = minio.conf
 	source = minio.service
 	source = minio.sysusers
