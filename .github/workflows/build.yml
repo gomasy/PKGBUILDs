@@ -26,6 +26,9 @@ jobs:
           - nginx-mainline-mod-headers-more
           - openarc
           - otelcol
+          - qt5-gamepad
+          - qt5-websockets
+          - wfview
     steps:
       - uses: actions/checkout@v6
 
