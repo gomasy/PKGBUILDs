@@ -1,0 +1,61 @@
+# Maintainer: Gomasy <nyan@gomasy.jp>
+# Contributor: James Bowling <kf5u AT pm DOT me>
+pkgname=wsjtx-improved
+_pkgname=wsjtx
+pkgver=3.1.0
+pkgrel=260228
+_build=260228
+pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
+arch=('x86_64' 'aarch64')
+url="https://sourceforge.net/projects/wsjt-x-improved/"
+license=('GPL3')
+depends=(
+	'fftw'
+	'hamlib>=4.5'
+	'libusb'
+	'portaudio'
+	'qt5-base'
+	'qt5-multimedia'
+	'qt5-serialport'
+	'qt5-tools'
+	'qt5-websockets'
+	'readline'
+)
+makedepends=(
+	'cmake'
+	'asciidoc'
+	'asciidoctor'
+	'boost'
+	'boost-libs'
+	'gcc-fortran'
+	'texinfo'
+)
+install=wsjtx-improved.install
+provides=('wsjtx')
+conflicts=('wsjtx')
+source=("https://downloads.sourceforge.net/project/wsjt-x-improved/WSJT-X_v$pkgver/Source%20code/$_pkgname-${pkgver}_improved_PLUS_${_build}.tgz")
+md5sums=('d6b8efd94a5e039921fda32b42569994')
+sha1sums=('92dc36b5b6839603011ba859baf6486092141f6f')
+options=(!lto)
+prepare() {
+	tar xzf ${_pkgname}-${pkgver}_improved_PLUS_${_build}.tgz
+	mkdir -p "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
+	cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix
+	tar xzf "$srcdir"/$_pkgname-$pkgver/src/wsjtx.tgz
+}
+build() {
+	cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
+	cmake \
+		-Wno-dev \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_Fortran_FLAGS="${CFLAGS}" \
+		../wsjtx
+	make || return 1
+}
+package() {
+	cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
+	make DESTDIR=$pkgdir install
+	install -Dm644 "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/wsjtx/sounds/{ContinentOnBand,Continent,CQ,CQZoneOnBand,CQZone,DXcall,DXCCOnBand,DXCC,GridOnBand,Grid,ITUZoneOnBand,ITUZone,MyCall,_Zone}.wav -t "$pkgdir"/opt/wsjtx/sounds
+	rm -rf "$pkgdir/home"
+}

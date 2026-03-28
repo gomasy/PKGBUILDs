@@ -22,6 +22,7 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [tree-sitter-mainline](tree-sitter-mainline/) | Incremental parsing system for programming tools, built from mainline |
 | [vim-mainline](vim-mainline/) | Vi IMproved, built from the latest mainline source |
 | [wfview](wfview/) | Interface for Icom transceivers |
+| [wsjtx-improved](wsjtx-improved/) | Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB |
 
 ## Building
 

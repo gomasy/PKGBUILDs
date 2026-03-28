@@ -29,6 +29,7 @@ jobs:
           - qt5-gamepad
           - qt5-websockets
           - wfview
+          - wsjtx-improved
     steps:
       - uses: actions/checkout@v6
 
