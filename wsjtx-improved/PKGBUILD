@@ -3,13 +3,14 @@
 pkgname=wsjtx-improved
 _pkgname=wsjtx
 pkgver=3.1.0
-pkgrel=260228
+pkgrel=260330
 _build=260228
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 arch=('x86_64' 'aarch64')
 url="https://sourceforge.net/projects/wsjt-x-improved/"
 license=('GPL3')
 depends=(
+	'boost-libs'
 	'fftw'
 	'hamlib>=4.5'
 	'libusb'
@@ -26,7 +27,6 @@ makedepends=(
 	'asciidoc'
 	'asciidoctor'
 	'boost'
-	'boost-libs'
 	'gcc-fortran'
 	'texinfo'
 )

@@ -1,7 +1,7 @@
 pkgbase = wsjtx-improved
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB
 	pkgver = 3.1.0
-	pkgrel = 260228
+	pkgrel = 260330
 	url = https://sourceforge.net/projects/wsjt-x-improved/
 	install = wsjtx-improved.install
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = wsjtx-improved
 	makedepends = asciidoc
 	makedepends = asciidoctor
 	makedepends = boost
-	makedepends = boost-libs
 	makedepends = gcc-fortran
 	makedepends = texinfo
+	depends = boost-libs
 	depends = fftw
 	depends = hamlib>=4.5
 	depends = libusb
