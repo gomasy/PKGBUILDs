@@ -4,6 +4,7 @@ pkgbase = tqsl
 	pkgrel = 1
 	url = https://www.arrl.org/tqsl-download
 	arch = x86_64
+	arch = aarch64
 	license = custom
 	makedepends = cmake
 	depends = openssl
