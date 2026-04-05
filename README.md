@@ -19,6 +19,7 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [qt5-gamepad](qt5-gamepad/) | Adds support for getting events from gamepad devices |
 | [qt5-websockets](qt5-websockets/) | Provides WebSocket communication compliant with RFC 6455 |
 | [readsb-protobuf](readsb-protobuf/) | Mode-S/ADS-B/TIS decoder for RTLSDR and other devices |
+| [tqsl](tqsl/) | ARRL LoTW Trusted QSL (TQSL) software |
 | [tree-sitter-mainline](tree-sitter-mainline/) | Incremental parsing system for programming tools, built from mainline |
 | [vim-mainline](vim-mainline/) | Vi IMproved, built from the latest mainline source |
 | [wfview](wfview/) | Interface for Icom transceivers |

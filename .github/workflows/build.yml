@@ -28,6 +28,7 @@ jobs:
           - otelcol
           - qt5-gamepad
           - qt5-websockets
+          - tqsl
           - wfview
           - wsjtx-improved
     steps:
