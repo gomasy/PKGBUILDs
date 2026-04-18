@@ -44,12 +44,21 @@ prepare() {
 	tar xzf "$srcdir"/$_pkgname-$pkgver/src/wsjtx.tgz
 }
 build() {
+	local _fortran_flags _flag
+	for _flag in ${CFLAGS}; do
+		case "${_flag}" in
+			-Wformat*|-Werror=format-security) ;;
+			*) _fortran_flags+="${_flag} " ;;
+		esac
+	done
+
 	cd "$srcdir"/$_pkgname-$pkgver/wsjtx-prefix/build
 	cmake \
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_Fortran_FLAGS="${CFLAGS}" \
+		-DCMAKE_C_FLAGS="${CFLAGS} -Wno-unused-parameter" \
+		-DCMAKE_Fortran_FLAGS="${_fortran_flags}" \
 		../wsjtx
 	make || return 1
 }
