@@ -57,7 +57,7 @@ build() {
 		-Wno-dev \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_C_FLAGS="${CFLAGS} -Wno-unused-parameter" \
+		-DCMAKE_C_FLAGS="${CFLAGS} -Wno-format-security -Wno-unused-parameter" \
 		-DCMAKE_Fortran_FLAGS="${_fortran_flags}" \
 		../wsjtx
 	make || return 1
