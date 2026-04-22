@@ -11,6 +11,7 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [mackerel-agent](mackerel-agent/) | Application performance management agent by Mackerel |
 | [minio-modified](minio-modified/) | Object storage server compatible with Amazon S3 |
 | [neovim-mainline](neovim-mainline/) | Fork of Vim built from the latest mainline source |
+| [nestopia](nestopia/) | High-accuracy NES/Famicom emulator |
 | [nginx-mainline-mod-brotli](nginx-mainline-mod-brotli/) | Brotli compression module for mainline nginx |
 | [nginx-mainline-mod-fancyindex](nginx-mainline-mod-fancyindex/) | Fancy directory index module for mainline nginx |
 | [nginx-mainline-mod-headers-more](nginx-mainline-mod-headers-more/) | Set and clear HTTP headers module for mainline nginx |
