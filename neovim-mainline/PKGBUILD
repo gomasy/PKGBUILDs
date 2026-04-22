@@ -67,8 +67,8 @@ package() {
     DESTDIR="$pkgdir" cmake --install build
 
     install -Dm644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-    install -Dm644 runtime/nvim.desktop -t "$pkgdir/usr/share/applications/"
-    install -Dm644 runtime/nvim.appdata.xml -t "$pkgdir/usr/share/metainfo/"
+    install -Dm644 runtime/org.neovim.nvim.desktop -t "$pkgdir/usr/share/applications/"
+    install -Dm644 runtime/org.neovim.nvim.appdata.xml -t "$pkgdir/usr/share/metainfo/"
     install -Dm644 runtime/nvim.png -t "$pkgdir/usr/share/pixmaps/"
 
     # Tree-sitter grammars are packaged separately and installed into
