@@ -42,4 +42,4 @@ docker build --build-context <package-name> .
 
 ## License
 
-MIT — see [LICENSE](LICENSE) for details.
+0BSD — see [LICENSE](LICENSE) for details.
