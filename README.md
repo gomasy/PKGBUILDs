@@ -15,7 +15,6 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [nginx-mainline-mod-fancyindex](nginx-mainline-mod-fancyindex/) | Fancy directory index module for mainline nginx |
 | [nginx-mainline-mod-headers-more](nginx-mainline-mod-headers-more/) | Set and clear HTTP headers module for mainline nginx |
 | [openarc](openarc/) | Open source implementation of the ARC email authentication system |
-| [otelcol](otelcol/) | OpenTelemetry Collector binary |
 | [qt5-gamepad](qt5-gamepad/) | Adds support for getting events from gamepad devices |
 | [qt5-websockets](qt5-websockets/) | Provides WebSocket communication compliant with RFC 6455 |
 | [readsb-protobuf](readsb-protobuf/) | Mode-S/ADS-B/TIS decoder for RTLSDR and other devices |
