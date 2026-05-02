@@ -3,7 +3,7 @@
 pkgname=wsjtx-improved
 _pkgname=wsjtx
 pkgver=3.1.0
-pkgrel=260418
+pkgrel=260425
 _build=260418
 pkgdesc="Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WSJT-X Improved by DG2YCB"
 arch=('x86_64' 'aarch64')
