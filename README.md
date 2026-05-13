@@ -7,6 +7,7 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | Package | Description |
 |---------|-------------|
 | [asterisk-lts-22](asterisk-lts-22/) | A complete PBX solution — LTS release 22 |
+| [js8call-improved](js8call-improved/) | Continued development of the JS8Call project |
 | [libreswan](libreswan/) | IPsec implementation with IKEv1 and IKEv2 keying protocols |
 | [mackerel-agent](mackerel-agent/) | Application performance management agent by Mackerel |
 | [minio-modified](minio-modified/) | Object storage server compatible with Amazon S3 |

@@ -1,0 +1,27 @@
+pkgbase = js8call-improved
+	pkgdesc = Continued development of the JS8Call project
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = https://github.com/JS8Call-improved/JS8Call-improved/
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-serialport
+	depends = libusb
+	depends = systemd-libs
+	depends = libxkbcommon-x11
+	depends = fftw
+	depends = boost
+	depends = hamlib
+	provides = js8call
+	conflicts = js8call
+	options = !lto
+	source = js8call-improved-2.5.2.tar.gz::https://github.com/js8call-improved/js8call-improved/archive/refs/tags/release/2.5.2.tar.gz
+	source = js8call-desktop.patch
+	sha1sums = 85e8ff0c9ce72919fc37f52cc991aeccc637ff65
+	sha1sums = 0a89b3ae8beaddabf0575b99139d78efdeca27ca
+
+pkgname = js8call-improved

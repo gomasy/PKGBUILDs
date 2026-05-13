@@ -1,0 +1,8 @@
+#Ignore everything
+*
+
+#But not these files...
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!js8call-desktop.patch
