@@ -2,7 +2,7 @@
 # Contributor: Filipe Laíns <lains@riseup.net>
 
 pkgname=tqsl
-pkgver=2.8.4
+pkgver=2.8.6
 pkgrel=1
 pkgdesc='ARRL LoTW Trusted QSL (TQSL) software'
 url='https://www.arrl.org/tqsl-download'
@@ -11,7 +11,7 @@ license=('custom')
 depends=('openssl' 'sqlite' 'expat' 'zlib' 'curl' 'wxwidgets-gtk3')
 makedepends=('cmake')
 source=("https://www.arrl.org/tqsl/tqsl-$pkgver.tar.gz")
-sha512sums=('cca93d2dd044c144fedafb773345638c7e31d9a1bd25e7d8adb492777e494583ebfb26e00895d338b5fd7985567bd4af907ecc88b1738b61715a691979401c10')
+sha512sums=('82190ca7d7589cfa7e13796f97b0d417590112220fcc159eb6d307fac9271ccd45e58759b1962a00d09efeb62c2a47aa83d40f0b3a13a42473a40e6636da5575')
 
 build() {
   cd $pkgname-$pkgver
