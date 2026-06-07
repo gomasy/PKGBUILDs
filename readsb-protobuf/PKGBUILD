@@ -41,7 +41,7 @@ pkgver() {
 }
 
 build() {
-  export CFLAGS="$CFLAGS -Wno-unterminated-string-initialization -Wno-discarded-qualifiers -Wno-format-truncation"
+  export CFLAGS="$CFLAGS -Wno-unterminated-string-initialization -Wno-discarded-qualifiers -Wno-format-truncation -Wno-incompatible-pointer-types"
 
   cd "${srcdir}/${pkgname}"
   make -j1 BLADERF=yes RTLSDR=yes PLUTOSDR=yes
