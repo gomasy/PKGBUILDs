@@ -18,7 +18,7 @@ jobs:
           - neovim-mainline
           - tree-sitter-mainline
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check eligibility
         env:

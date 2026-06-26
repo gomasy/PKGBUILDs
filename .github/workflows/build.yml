@@ -32,7 +32,7 @@ jobs:
           - wfview
           - wsjtx-improved
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Check eligibility
         env:
