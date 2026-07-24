@@ -10,6 +10,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=js8call-improved
+# renovate: datasource=github-tags depName=js8call-improved/js8call-improved
 pkgver=3.0.3
 pkgrel=1
 pkgdesc="Continued development of the JS8Call project"

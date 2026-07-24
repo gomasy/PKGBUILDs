@@ -2,6 +2,7 @@
 # Contributor: Edmund Lodewijks <edmund at proteamail.com>
 
 pkgname=openarc
+# renovate: datasource=github-releases depName=flowerysong/OpenARC
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Open source implementation of the ARC email authentication system"

@@ -2,6 +2,7 @@
 # Contributor: Yusuke Miyazaki <miyazaki.dev (at) gmail.com>
 
 pkgname=mackerel-agent
+# renovate: datasource=github-tags depName=mackerelio/mackerel-agent
 pkgver=0.87.0
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"

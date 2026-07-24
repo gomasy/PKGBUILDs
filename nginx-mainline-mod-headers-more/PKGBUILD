@@ -2,6 +2,7 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=nginx-mainline-mod-headers-more
+# renovate: datasource=github-tags depName=openresty/headers-more-nginx-module
 pkgver=0.40
 pkgrel=2
 

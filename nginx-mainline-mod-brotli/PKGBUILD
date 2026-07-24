@@ -3,6 +3,7 @@
 
 pkgname=nginx-mainline-mod-brotli
 epoch=1
+# renovate: datasource=github-tags depName=google/ngx_brotli
 pkgver=1.0.0rc
 pkgrel=25
 

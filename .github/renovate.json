@@ -3,5 +3,15 @@
   "extends": ["config:recommended"],
   "prHourlyLimit": 0,
   "prConcurrentLimit": 0,
-  "rangeStrategy": "bump"
+  "rangeStrategy": "bump",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["/PKGBUILD$"],
+      "matchStrings": [
+        "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: extractVersion=(?<extractVersion>.+))?\\npkgver=['\"]?(?<currentValue>[\\d][\\w.]*)['\"]?\\n"
+      ],
+      "extractVersionTemplate": "^v(?<version>.+)$"
+    }
+  ]
 }

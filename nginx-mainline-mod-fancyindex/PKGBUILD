@@ -5,6 +5,7 @@
 # Contributor: hdhoang <arch@hdhoang.space>
 
 pkgname=nginx-mainline-mod-fancyindex
+# renovate: datasource=github-tags depName=aperezdc/ngx-fancyindex
 pkgver=0.6.0
 pkgrel=8
 _modname="${pkgname#nginx-mainline-mod-}"

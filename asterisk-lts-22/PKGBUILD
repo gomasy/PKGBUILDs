@@ -9,6 +9,7 @@
 
 _pkg=asterisk
 pkgname=${_pkg}-lts-22
+# renovate: datasource=github-tags depName=asterisk/asterisk extractVersion=^(?<version>22\..+)$
 pkgver=22.10.1
 pkgrel=1
 pkgdesc='A complete PBX solution - LTS release 22 version'

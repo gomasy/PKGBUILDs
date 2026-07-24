@@ -8,6 +8,7 @@
 set -u
 pkgname='libreswan'
 #pkgname+='-git'
+# renovate: datasource=github-tags depName=libreswan/libreswan
 pkgver='5.3.2'
 pkgrel='1'
 pkgdesc='IPsec implementation with IKEv1 and IKEv2 keying protocols'
