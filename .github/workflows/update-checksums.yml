@@ -7,6 +7,9 @@ on:
     paths:
       - '*/PKGBUILD'
 
+permissions:
+  contents: write
+
 jobs:
   update-checksums:
     runs-on: ubuntu-latest
@@ -14,7 +17,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          token: ${{ secrets._GITHUB_TOKEN }}
           fetch-depth: 0
 
       - name: Find changed PKGBUILDs
