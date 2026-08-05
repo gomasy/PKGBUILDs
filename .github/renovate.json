@@ -13,7 +13,7 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>\\S+) depName=(?<depName>\\S+)(?: versioning=(?<versioning>\\S+))?(?: extractVersion=(?<extractVersion>.+))?\\n_?pkgver=['\"]?(?<currentValue>[\\d][\\w.-]*)['\"]?\\n"
       ],
-      "extractVersionTemplate": "^v(?<version>.+)$"
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v(?<version>.+)${{/if}}"
     }
   ]
 }
