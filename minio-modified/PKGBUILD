@@ -7,7 +7,7 @@
 
 pkgname=minio-modified
 # renovate: datasource=github-tags depName=gomasy/minio versioning=loose extractVersion=^RELEASE\.(?<version>.+)$
-_pkgver=2026-06-18T00-00-00Z
+_pkgver=2026-08-04T00-00-00Z
 pkgver="${_pkgver%%T*}"
 pkgver="${pkgver//-/.}"
 pkgrel=1
