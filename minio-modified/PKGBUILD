@@ -6,9 +6,10 @@
 # Contributor: Daniel Maslowski <info@orangecms.org>
 
 pkgname=minio-modified
-pkgver=2026.06.18
-_timever=T00-00-00Z
-_pkgver="${pkgver//./-}${_timever//:/-}"
+# renovate: datasource=github-tags depName=gomasy/minio extractVersion=^RELEASE\.(?<version>.+)$
+_pkgver=2026-06-18T00-00-00Z
+pkgver="${_pkgver%%T*}"
+pkgver="${pkgver//-/.}"
 pkgrel=1
 pkgdesc='Object storage server compatible with Amazon S3'
 arch=('x86_64' 'aarch64')
@@ -39,9 +40,9 @@ build() {
   GO_LDFLAGS="\
       -linkmode=external \
       -compressdwarf=false \
-      -X github.com/minio/minio/cmd.Version=${pkgver//./-}${_timever} \
+      -X github.com/minio/minio/cmd.Version=${_pkgver} \
       -X github.com/minio/minio/cmd.CopyrightYear=$(date +%Y) \
-      -X github.com/minio/minio/cmd.ReleaseTag=${pkgver//./-}${_timever} \
+      -X github.com/minio/minio/cmd.ReleaseTag=${_pkgver} \
       -X github.com/minio/minio/cmd.CommitID=$(git rev-parse RELEASE.${_pkgver}) \
       -X github.com/minio/minio/cmd.ShortCommitID=$(git rev-parse --short RELEASE.${_pkgver})"
 
