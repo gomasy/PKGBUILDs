@@ -3,16 +3,18 @@ name: Update aircraft database
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   update-aircraft-db:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      updated: ${{ steps.check.outputs.updated }}
     steps:
       - uses: actions/checkout@v7
 
       - name: Check eligibility
+        id: check
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -43,10 +45,12 @@ jobs:
 
           echo "_COMMIT=$_COMMIT" >> $GITHUB_ENV
           echo "_DATE=$_DATE" >> $GITHUB_ENV
-          echo "_PREVIOUS_COMMIT=$_PREVIOUS_COMMIT" >> $GITHUB_ENV
+          if [ "$_COMMIT" != "$_PREVIOUS_COMMIT" ]; then
+            echo "updated=true" >> $GITHUB_OUTPUT
+          fi
 
       - name: Update PKGBUILD
-        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
+        if: ${{ steps.check.outputs.updated == 'true' }}
         run: |
           sed -i -E "s/^_dbcommit=.*/_dbcommit=$_COMMIT/; s/^_dbdate=.*/_dbdate=$_DATE/" \
             readsb-protobuf/PKGBUILD
@@ -69,7 +73,7 @@ jobs:
           sudo chown -R "$(id -u):$(id -g)" readsb-protobuf
 
       - name: Commit and push
-        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
+        if: ${{ steps.check.outputs.updated == 'true' }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -78,3 +82,28 @@ jobs:
             git commit -m "readsb-protobuf: Update aircraft database to $_DATE"
             git push
           fi
+
+  # weekly-build.yml only builds when the upstream readsb-protobuf commit id
+  # changed, so a database-only update would never be rebuilt. Reset the stored
+  # ids to a value no commit id can ever match. The build then writes the real id
+  # back. Deleting them instead would abort the eligibility check, since it
+  # assigns from a command substitution.
+  reset-eligibility:
+    runs-on: ${{ matrix.platform }}
+    needs:
+      - update-aircraft-db
+    if: ${{ needs.update-aircraft-db.outputs.updated == 'true' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - ubuntu-latest
+          - ubuntu-24.04-arm
+    steps:
+      - name: Reset build eligibility
+        env:
+          GH_TOKEN: ${{ secrets._GITHUB_TOKEN }}
+        run: |
+          _ARCH=$(uname -m)
+          gh variable set READSB_PROTOBUF_COMMIT_ID_${_ARCH^^} \
+            --repo ${{ github.repository }} --body none
