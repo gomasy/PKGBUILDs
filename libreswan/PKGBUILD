@@ -67,7 +67,7 @@ _bargs=(
   USE_DNSSEC=false
   USE_LABELED_IPSEC=false
   USE_LIBCAP_NG=true
-  USE_DH2=true # insecure modp1024
+  USE_DH2=false # insecure modp1024; broken in 5.4, see https://github.com/libreswan/libreswan/issues/2980
 
   USE_LEAK_DETECTIVE=false
   USE_XAUTH=true
