@@ -3,7 +3,17 @@
 
 pkgname=readsb-protobuf
 pkgver=4.0.0.r36.g566804a
-pkgrel=1
+
+# Weekly aircraft database export from https://github.com/Mictronics/aircraft-database
+_dbcommit=7332e2e9aec3b071b4c90032ba44c348bb3cd449
+_dbdate=20260816
+
+# pkgrel follows the aircraft database snapshot date, so a database-only refresh
+# is still picked up as an upgrade. makepkg rewrites any line starting with
+# "pkgrel=" back to 1 whenever pkgver() reports a new version, and re-sources the
+# PKGBUILD afterwards -- assigning through declare keeps the derivation intact.
+# -g is required because makepkg sources the PKGBUILD from inside a function.
+declare -g pkgrel="${_dbdate}"
 pkgdesc="A Mode-S/ADSB/TIS decoder for RTLSDR, BladeRF, Modes-Beast and GNS5894 devices."
 arch=('x86_64' 'aarch64')
 url="https://github.com/Mictronics/readsb-protobuf"
@@ -24,12 +34,16 @@ makedepends=('git')
 backup=('etc/default/readsb')
 
 source=('git+https://github.com/Mictronics/readsb-protobuf.git'
+        "indexedDB-${_dbdate}.zip::https://github.com/Mictronics/aircraft-database/raw/${_dbcommit}/indexedDB.zip"
         'readsb.default'
         'readsb.sysusers'
 	'readsb.service'
 	'readsb.tmpfiles')
 
+noextract=("indexedDB-${_dbdate}.zip")
+
 sha256sums=('SKIP'
+            '709e9b8041ba206b12f749469c91a16cb1b211853ec8d06b1b8c9ad7515a65a0'
             '1b6721ee262fdc04f9009a793eca96b81127145b4314e21b3ad468c504c1c9d6'
             '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
             'da7b799553bf6098573a9a03fce4baaf1ef20f668a7a4772d4c1bd62aaf08736'
@@ -38,6 +52,11 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/${pkgname}"
   git describe --long --tags --match=v* | sed 's/dev.//g' | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  # Replace the bundled aircraft database with the latest weekly export
+  bsdtar -xf "${srcdir}/indexedDB-${_dbdate}.zip" -C "${srcdir}/${pkgname}/webapp/src/db"
 }
 
 build() {
