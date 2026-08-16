@@ -1,0 +1,80 @@
+name: Update aircraft database
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-aircraft-db:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check eligibility
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          read -r _COMMIT _DATE < <(gh api \
+            "repos/Mictronics/aircraft-database/commits?path=indexedDB.zip&per_page=1" \
+            --jq '"\(.[0].sha) \(.[0].commit.committer.date)"')
+          _DATE=${_DATE:0:10}
+          _DATE=${_DATE//-/}
+
+          # An empty result yields "null" with a successful exit status
+          if ! [[ $_COMMIT =~ ^[0-9a-f]{40}$ && $_DATE =~ ^[0-9]{8}$ ]]; then
+            echo "Unexpected response: commit '$_COMMIT', date '$_DATE'" >&2
+            exit 1
+          fi
+
+          _PREVIOUS_COMMIT=$(sed -n 's/^_dbcommit=//p' readsb-protobuf/PKGBUILD)
+          _PREVIOUS_DATE=$(sed -n 's/^_dbdate=//p' readsb-protobuf/PKGBUILD)
+          echo "Previous commit id: $_PREVIOUS_COMMIT ($_PREVIOUS_DATE)"
+          echo "Current commit id: $_COMMIT ($_DATE)"
+
+          # pkgrel is derived from _dbdate, so a second export on the same day
+          # needs a suffix to stay an upgrade for pacman
+          if [ "${_PREVIOUS_DATE%%.*}" = "$_DATE" ]; then
+            _SUFFIX=${_PREVIOUS_DATE#*.}
+            [ "$_SUFFIX" = "$_PREVIOUS_DATE" ] && _SUFFIX=0
+            _DATE="$_DATE.$((_SUFFIX + 1))"
+          fi
+
+          echo "_COMMIT=$_COMMIT" >> $GITHUB_ENV
+          echo "_DATE=$_DATE" >> $GITHUB_ENV
+          echo "_PREVIOUS_COMMIT=$_PREVIOUS_COMMIT" >> $GITHUB_ENV
+
+      - name: Update PKGBUILD
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
+        run: |
+          sed -i -E "s/^_dbcommit=.*/_dbcommit=$_COMMIT/; s/^_dbdate=.*/_dbdate=$_DATE/" \
+            readsb-protobuf/PKGBUILD
+
+          # Update checksums and regenerate .SRCINFO using Arch Linux container
+          docker run --rm \
+            -v "$PWD/readsb-protobuf:/pkg" \
+            archlinux:latest \
+            bash -c '
+              set -e
+              pacman -Sy --noconfirm git pacman-contrib
+              useradd -m builder
+              chown -R builder:builder /pkg
+              cd /pkg
+              runuser -u builder -- env SRCDEST=/tmp/sources updpkgsums
+              runuser -u builder -- bash -c "makepkg --printsrcinfo > .SRCINFO"
+            '
+
+          # Restore file ownership
+          sudo chown -R "$(id -u):$(id -g)" readsb-protobuf
+
+      - name: Commit and push
+        if: ${{ env._COMMIT != env._PREVIOUS_COMMIT }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "readsb-protobuf: Update aircraft database to $_DATE"
+            git push
+          fi
