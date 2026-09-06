@@ -1,4 +1,4 @@
-pkgbase = minio-modified
+pkgbase = silo
 	pkgdesc = Object storage server compatible with Amazon S3
 	pkgver = 2026.09.03
 	pkgrel = 1
@@ -12,7 +12,7 @@ pkgbase = minio-modified
 	provides = minio
 	conflicts = minio
 	backup = etc/minio/minio.conf
-	source = git+https://github.com/gomasy/minio.git#tag=RELEASE.2026-09-03T13-18-01Z
+	source = git+https://github.com/gomasy/silo.git#tag=RELEASE.2026-09-03T13-18-01Z
 	source = minio.conf
 	source = minio.service
 	source = minio.sysusers
@@ -21,4 +21,4 @@ pkgbase = minio-modified
 	sha512sums = f4df8e50618712b6e5f62e2674eca4430ef17ef003426bd83ea6b427da4e0fb519589cc14547b08db4b4a0de114488920071295a680b0c1cb5fd508d31576190
 	sha512sums = 7e4617aed266cf48a2ff9b0e80e31641d998537c78d2c56ce97b828cfc77d96dbf64728d4235dac7382d6e5b201388bef6722959302de5e2298d93f4ec1e0e63
 
-pkgname = minio-modified
+pkgname = silo

@@ -21,13 +21,13 @@ jobs:
           - js8call-improved
           - libreswan
           - mackerel-agent
-          - minio-modified
           - nginx-mainline-mod-brotli
           - nginx-mainline-mod-fancyindex
           - nginx-mainline-mod-headers-more
           - openarc
           - qt5-gamepad
           - qt5-websockets
+          - silo
           - tqsl
           - wfview
           - wsjtx-improved

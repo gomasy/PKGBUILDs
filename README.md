@@ -10,7 +10,6 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [js8call-improved](js8call-improved/) | Continued development of the JS8Call project |
 | [libreswan](libreswan/) | IPsec implementation with IKEv1 and IKEv2 keying protocols |
 | [mackerel-agent](mackerel-agent/) | Application performance management agent by Mackerel |
-| [minio-modified](minio-modified/) | Object storage server compatible with Amazon S3 |
 | [neovim-mainline](neovim-mainline/) | Fork of Vim built from the latest mainline source |
 | [nginx-mainline-mod-brotli](nginx-mainline-mod-brotli/) | Brotli compression module for mainline nginx |
 | [nginx-mainline-mod-fancyindex](nginx-mainline-mod-fancyindex/) | Fancy directory index module for mainline nginx |
@@ -19,6 +18,7 @@ A collection of custom [PKGBUILD](https://wiki.archlinux.org/title/PKGBUILD) scr
 | [qt5-gamepad](qt5-gamepad/) | Adds support for getting events from gamepad devices |
 | [qt5-websockets](qt5-websockets/) | Provides WebSocket communication compliant with RFC 6455 |
 | [readsb-protobuf](readsb-protobuf/) | Mode-S/ADS-B/TIS decoder for RTLSDR and other devices |
+| [silo](silo/) | Object storage server compatible with Amazon S3 |
 | [tqsl](tqsl/) | ARRL LoTW Trusted QSL (TQSL) software |
 | [tree-sitter-mainline](tree-sitter-mainline/) | Incremental parsing system for programming tools, built from mainline |
 | [vim-mainline](vim-mainline/) | Vi IMproved, built from the latest mainline source |
