@@ -29,7 +29,7 @@ depends=(
 )
 
 source=("https://github.com/wf-group/wfview/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('d19a8083564140c008208a700e9352b3')
+md5sums=('3835fd96974595a88771f6730de756ab')
 
 build() {
   cd "${pkgname}-${pkgver}"
