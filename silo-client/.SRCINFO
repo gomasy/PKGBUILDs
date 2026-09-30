@@ -1,0 +1,19 @@
+pkgbase = silo-client
+	pkgdesc = Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage
+	pkgver = 2026.09.16
+	pkgrel = 1
+	url = https://github.com/pgsty/mc
+	install = silo-client.install
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-or-later
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = minio-client
+	conflicts = minio-client
+	options = !lto
+	source = git+https://github.com/pgsty/mc.git#tag=RELEASE.2026-09-16T00-00-00Z
+	sha512sums = 8869f9920ed5d9941aafd9a1e08a0c476a020bd6fd6c4384a6a89b1b1d66dea061d107bc04b514d83e2f9a68957643a1dc8dca50f438709b869284995d5d8c37
+
+pkgname = silo-client

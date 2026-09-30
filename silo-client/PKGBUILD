@@ -1,0 +1,46 @@
+# Maintainer: Gomasy <nyan@gomasy.jp>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
+# Contributor: Christian Heusel <gromit@archlinux.org>
+# Contributor: Justin Kromlinger <hashworks@archlinux.org>
+# Contributor: Dhananjay Balan <mail@dbalan.in>
+
+pkgname=silo-client
+# renovate: datasource=github-tags depName=pgsty/mc versioning=loose extractVersion=^RELEASE\.(?<version>.+)$
+_pkgver=2026-09-16T00-00-00Z
+pkgver="${_pkgver%%T*}"
+pkgver="${pkgver//-/.}"
+pkgrel=1
+pkgdesc='Replacement for ls, cp, mkdir, diff and rsync commands for filesystems and object storage'
+arch=('x86_64' 'aarch64')
+url='https://github.com/pgsty/mc'
+license=('AGPL-3.0-or-later')
+makedepends=('go' 'git')
+depends=('glibc')
+provides=('minio-client')
+conflicts=('minio-client')
+options=(!lto)
+install=silo-client.install
+source=(git+https://github.com/pgsty/mc.git#tag=RELEASE.${_pkgver})
+sha512sums=('8869f9920ed5d9941aafd9a1e08a0c476a020bd6fd6c4384a6a89b1b1d66dea061d107bc04b514d83e2f9a68957643a1dc8dca50f438709b869284995d5d8c37')
+
+build() {
+  cd mc
+
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+  export MC_RELEASE="RELEASE"
+  local _time="${_pkgver#*T}"
+  GO_LDFLAGS="\
+      -linkmode=external \
+      -compressdwarf=false \
+      $(go run buildscripts/gen-ldflags.go "${_pkgver%%T*}T${_time//-/:}")"
+
+  go build -ldflags "$GO_LDFLAGS" .
+}
+
+package() {
+  install -Dm755 mc/mc "$pkgdir/usr/bin/mcli"
+}
