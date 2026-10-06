@@ -30,9 +30,9 @@ source=(
   "https://download.libreswan.org/${pkgname}-${pkgver%%.r*}.tar.gz"
   'tmpfiles.conf'
 )
-md5sums=('7033ecec82837a5e97ec55da2ef58164'
+md5sums=('2c64f68c65944c9704c746af16adf600'
          '77399a739ee99f8bc54837684d7c39d5')
-sha256sums=('d26340cf625316cc9127e05b392214a24a10889f4f1d9940c2ea64bab710a855'
+sha256sums=('7b0f90c9a83b3ad96b430d85495074eb626599024c973789c1b0b6cff032ee10'
             '78265c690d58228c3bcc1a8793456172c39d493d268e9d9b1816288d0a47f573')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
