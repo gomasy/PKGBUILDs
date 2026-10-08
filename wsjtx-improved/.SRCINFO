@@ -1,7 +1,7 @@
 pkgbase = wsjtx-improved
 	pkgdesc = Software for Amateur Radio Weak-Signal Communication (JT9 and JT65) - WS Suite (formerly WSJT-X Improved) by DG2YCB
 	pkgver = 3.2.1
-	pkgrel = 260926
+	pkgrel = 261008
 	url = https://sourceforge.net/projects/wsjt-x-improved/
 	install = wsjtx-improved.install
 	arch = x86_64
@@ -27,8 +27,8 @@ pkgbase = wsjtx-improved
 	provides = wsjtx
 	conflicts = wsjtx
 	options = !lto
-	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v3.2.1/Source%20code/ws-3.2.1_260926.tgz
-	md5sums = 2263d44fcfbcf33e23808f5a1d6edabb
-	sha1sums = 1c32ce6009b000290b045d69663d4299f97dad50
+	source = https://downloads.sourceforge.net/project/wsjt-x-improved/WS_v3.2.1/Source%20code/ws-3.2.1_261008.tgz
+	md5sums = 0171226ba9ec494101119ad1d09ba9a7
+	sha1sums = d57756f1871f2b130ad78fc0bf681fc1d7754219
 
 pkgname = wsjtx-improved
