@@ -21,7 +21,7 @@ conflicts=('minio-client')
 options=(!lto)
 install=silo-client.install
 source=(git+https://github.com/pgsty/mc.git#tag=RELEASE.${_pkgver})
-sha512sums=('01e252a1564040c8d1a3d1b2403be09063423a815585621a74598d5a1ead491d3c9d7bcc4b122b48d40fa55a11b320806b9097807aafbe8bbe7862d029a26d2d')
+sha512sums=('8869f9920ed5d9941aafd9a1e08a0c476a020bd6fd6c4384a6a89b1b1d66dea061d107bc04b514d83e2f9a68957643a1dc8dca50f438709b869284995d5d8c37')
 
 build() {
   cd mc
