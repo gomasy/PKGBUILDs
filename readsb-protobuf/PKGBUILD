@@ -5,8 +5,8 @@ pkgname=readsb-protobuf
 pkgver=4.0.0.r36.g566804a
 
 # Weekly aircraft database export from https://github.com/Mictronics/aircraft-database
-_dbcommit=e7ff3f1474334b3f00d50a6661ef1c16754721a5
-_dbdate=20261018
+_dbcommit=d31104a82bdc429be7fe94726247fc45aa0c49a4
+_dbdate=20261025
 
 # pkgrel follows the aircraft database snapshot date, so a database-only refresh
 # is still picked up as an upgrade. makepkg rewrites any line starting with
@@ -43,7 +43,7 @@ source=('git+https://github.com/Mictronics/readsb-protobuf.git'
 noextract=("indexedDB-${_dbdate}.zip")
 
 sha256sums=('SKIP'
-            '49d5c4cd5f3d89a4cba2e0cf3018e43d5f1caf9e851a2050175693a64b748a43'
+            'fdff9ab076f279658d21aa4bc61f7b2b8310410000a8e51b7cd3c29989a094f7'
             '1b6721ee262fdc04f9009a793eca96b81127145b4314e21b3ad468c504c1c9d6'
             '3da99128f5a89aef6f9748f1e09f0120940f123e80c007e7d5ac2d0571740a05'
             'da7b799553bf6098573a9a03fce4baaf1ef20f668a7a4772d4c1bd62aaf08736'
