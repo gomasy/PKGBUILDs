@@ -14,7 +14,7 @@ conflicts=('mackerel-agent-git')
 makedepends=('go-pie')
 backup=('etc/mackerel-agent/mackerel-agent.conf')
 source=("https://github.com/mackerelio/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e0c6b849f0cfc8a9a6d98ba1556cfd705fa34299ae40f7fa91c91058a2b8d8d1')
+sha256sums=('0e3511eadf9bbcb851fa3e8dc3cb061788b77ab6affebbcedaaf6e31a42c5f15')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
