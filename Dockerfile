@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.28
+# syntax=docker/dockerfile:1.29
 FROM ghcr.io/gomasy/archlinuxarm AS builder
 
 RUN pacman-key --init && \
