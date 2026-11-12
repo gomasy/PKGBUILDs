@@ -3,7 +3,7 @@
 
 pkgname=mackerel-agent
 # renovate: datasource=github-tags depName=mackerelio/mackerel-agent
-pkgver=0.87.2
+pkgver=0.87.3
 pkgrel=1
 pkgdesc="A revolutionary new kind of application performance management"
 arch=('x86_64' 'aarch64')
@@ -14,7 +14,7 @@ conflicts=('mackerel-agent-git')
 makedepends=('go-pie')
 backup=('etc/mackerel-agent/mackerel-agent.conf')
 source=("https://github.com/mackerelio/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('0e3511eadf9bbcb851fa3e8dc3cb061788b77ab6affebbcedaaf6e31a42c5f15')
+sha256sums=('05259a134820d16755a091c3a6629f0f0ed14ed20b7f3a3918cccbe26c80d5d5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
