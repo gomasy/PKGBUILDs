@@ -15,7 +15,7 @@ jobs:
       matrix:
         platform:
           - ubuntu-latest
-          - ubuntu-24.04-arm
+          - ubuntu-26.04-arm
         package:
           - asterisk-lts-22
           - js8call-improved
