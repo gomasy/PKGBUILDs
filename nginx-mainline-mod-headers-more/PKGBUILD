@@ -16,7 +16,7 @@ url="https://github.com/openresty/headers-more-nginx-module"
 license=('BSD')
 
 source=(https://github.com/openresty/$_modname-nginx-module/archive/v$pkgver/$_modname-$pkgver.tar.gz)
-sha256sums=('800eba641c29b89dfd00a97ccac314a2b7768bdd85ea37ed819452494a5633cd')
+sha256sums=('6f0e023e40149b19c8f9548a648ac53ac010e27829aee109abe88106609c041f')
 
 prepare() {
   mkdir -p build
